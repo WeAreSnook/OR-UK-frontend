@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/OR-UK-frontend">
+    <Router>
       <ScrollToTop/>
       <App />
     </Router>
