@@ -1,5 +1,6 @@
 {
   "name": "or-uk-frontend",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "core-js": "^3.6.5",
     "dompurify": "^2.2.8",
+    "env-cmd": "^10.1.0",
     "enzyme": "^3.11.0",
     "express": "^4.17.1",
     "inter-ui": "^3.18.0",
@@ -26,6 +28,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "build:production": "env-cmd -f .env.production npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
