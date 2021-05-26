@@ -795,3 +795,28 @@ footer {
   display: none;
 }
 
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+
+.checked::before,
+.unchecked::before {
+  content: ' ';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../../assets/unchecked.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.checked::before {
+  background-image: url('../../assets/checked.png');
+}
+
+table.feeds th,
+table.feeds td {
+  max-width: 14rem;
+}
