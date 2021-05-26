@@ -10,6 +10,7 @@ const Dashboard = () => {
                     The dashboard is intended to list all datasets and APIs published as part of the Open Referral UK
                 </p>
             </article>
+            
             <Table data={dummyData} />
         </main>
     </div>;
