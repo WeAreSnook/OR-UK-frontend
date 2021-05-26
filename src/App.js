@@ -25,7 +25,7 @@ function App() {
   const [homeProps, setHomeProps] = useState({});
   const [topMenuId, setTopMenuId] = useState('');
   const [mainMenu, setMainMenu] = useState([]);
-  const [errors] = useState({});  //use to confirm render component or error page
+  //const [errors] = useState({});  use to confirm render component or error page
 
   const BASE_URL  = process.env.REACT_APP_BASE_URL;
   const ABOUT_PAGE = process.env.REACT_APP_ABOUT_PAGE_URI;
