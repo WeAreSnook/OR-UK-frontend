@@ -1,14 +1,14 @@
 const getTimeMessage = (n, singular) => Math.round(n) === 1 ? `${Math.round(n)} ${singular} ago` : `${Math.round(n)} ${singular}s ago`;
 
 const getTimeDiffMessage = (lastCheck) => {
-    const now = 1622219053000 //Date.now();
+    const now = Date.now();
     const timestamp = Date.parse(lastCheck);
     const diff = now - timestamp;
 
     const seconds = diff / 1000;
 
     if (Math.round(seconds) < 60)
-        return getTimeMessage(seconds, 'second');
+        return getTimeMessage(seconds < 0 ? 0 : seconds, 'second');
 
     const minutes = seconds / 60;
 

@@ -1,10 +1,11 @@
 import Checkbox from './checkbox';
 import ApiLink from './apiLink';
 import LastChecked from './lastChecked';
+import { OrganisationLabel, DeveloperLabel } from './labelLink';
 
-const Row = ({item}) => <tr>
-    <td>{item.label}</td>
-    <td>{item.organisationLabel}</td>
+const Row = ({ item }) => <tr>
+    <td><OrganisationLabel item={item} /></td>
+    <td><DeveloperLabel item={item} /></td>
     <td><Checkbox isChecked={item.isUp} message={''} positiveMessage={'Live'} /></td>
     <td><Checkbox isChecked={item.isServicesValid} message={item.servicesMessage} positiveMessage={'Valid'} /></td>
     <td><Checkbox isChecked={item.isServiceExampleValid} message={item.serviceExampleMessage} positiveMessage={'Valid'} /></td>

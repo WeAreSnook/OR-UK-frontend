@@ -16,6 +16,7 @@ import CaseStudiesLandingPage from './components/casestudies/LandingPage';
 import SkipToContent from './components/header/SkipToContent';
 import Dashboard from './components/dashboard/dashboard';
 import mockData from './components/dashboard/mockData';
+import Preview from './components/preview/preview';
 
 console.log('mockData', mockData);
 
@@ -99,6 +100,7 @@ function App() {
             <Route path="/open-referral-uk-video-transcript" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
             <Route path="/dashboard" render={() => <Dashboard />} />
             <Route path="/devdashboard" render={() => <Dashboard overrideData={mockData} />} />
+            <Route path="/preview" render={() => <Preview />} />
             <Route path="/404"  component={NotFound} />
             <Redirect to="/404" />
         </Switch> 
