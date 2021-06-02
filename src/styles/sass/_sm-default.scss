@@ -906,6 +906,11 @@ table.feeds td {
   margin-right: 1.6rem;
 
   .help {
+    &:focus,
+    &:focus-within {
+      outline: solid 2px #333333;
+    }
+
     &::before {
       content: "?";
     }
@@ -956,7 +961,8 @@ table.feeds td {
     }
 
     &:hover,
-    &:focus {
+    &:focus,
+    &:focus-within {
       .help-text {
         opacity: 1;
         z-index: 1000;
