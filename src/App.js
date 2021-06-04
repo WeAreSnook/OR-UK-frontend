@@ -18,8 +18,6 @@ import Dashboard from './components/dashboard/dashboard';
 import mockData from './components/dashboard/mockData';
 import Preview from './components/preview/preview';
 
-console.log('mockData', mockData);
-
 //refactor
 //pull data as needed perhaps on first call of page?
 function App() {

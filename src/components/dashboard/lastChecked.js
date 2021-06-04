@@ -1,3 +1,5 @@
+import SummaryButton from './summaryButton';
+
 const getTimeMessage = (n, singular) => Math.round(n) === 1 ? `${Math.round(n)} ${singular} ago` : `${Math.round(n)} ${singular}s ago`;
 
 const getTimeDiffMessage = (lastCheck) => {
@@ -52,8 +54,7 @@ const LastChecked = ({ item }) => {
     const { lastCheck } = item;
 
     if (!lastCheck)
-        return <span> - </span>;
-
+        return <SummaryButton summary={item.summary} />;
 
     return <span title={getDateText(lastCheck)}>
         {getTimeDiffMessage(lastCheck)}

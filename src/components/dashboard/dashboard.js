@@ -55,6 +55,7 @@ const Dashboard = ({ overrideData = undefined }) => {
             return;
         (async () => {
             const newData = sortData((await fetchData()) || []);
+            newData.sort((a, b) => (a.organisationLabel || '').localeCompare(b.organisationLabel || ''));
             setData(newData);
         })();
     }, [overrideData]);
@@ -73,20 +74,18 @@ const Dashboard = ({ overrideData = undefined }) => {
             .catch(err => console.error(err))
     }, []);
 
-    console.log('help', help);
-
     return <div className="page-container flex-container">
         <main id="content" className="main-container">
             <article className="flex-right mb-1rem">
                 <h1>{content.title}</h1>
-                <InjectHtml itemKey={`${contentSlugfield}-header`} paragraphText={content.header} />
+                <InjectHtml sectionClassName='' itemKey={`${contentSlugfield}-header`} paragraphText={content.header} />
             </article>
 
             <Items data={data} help={help} />
             <Table data={data} help={help} />
 
             <article className="flex-right">
-                <InjectHtml itemKey={`${contentSlugfield}-header`} paragraphText={content.footer} />
+                <InjectHtml sectionClassName='' itemKey={`${contentSlugfield}-header`} paragraphText={content.footer} />
             </article>
         </main>
     </div>;

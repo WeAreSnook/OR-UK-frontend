@@ -199,6 +199,24 @@ li {
   padding: 0.6395em 1.5em;
 }
 
+.button-link {
+  border: 0;
+  border-radius: 0.2em;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+
+  padding: 0.4rem;
+  font-size: small;
+
+  box-shadow: inset 0px 0px 0px 3px $color-blue-light;
+  background-color: white;
+  color: $color-blue-dark;
+  font-weight: $midWeight;
+
+  cursor: pointer;
+}
+
 .button-primary,
 .button-secondary {
   &:hover {
@@ -836,6 +854,56 @@ footer {
   background-image: url("../../assets/checked.png");
 }
 
+@mixin hover-over {
+  opacity: 0;
+  z-index: -1;
+
+  transition: opacity 0.25s;
+  position: absolute;
+  display: block;
+  background-color: #333333;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: normal;
+  font-size: small;
+  padding: 0.5rem;
+  min-width: 16rem;
+  max-width: 32rem;
+  left: 50%;
+  margin-left: -8rem;
+
+  p {
+    font-size: small;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  a {
+    color: white;
+    font-size: small;
+  }
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.unchecked {
+  .message {
+    @include hover-over();
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .message {
+      opacity: 1;
+      z-index: 1000;
+    }
+  }
+}
+
 div.feeds {
   div.item {
     border: 3px solid #5ac09e;
@@ -930,34 +998,7 @@ table.feeds td {
     font-weight: bold;
 
     .help-text {
-      opacity: 0;
-      z-index: -1;
-
-      transition: opacity 0.25s;
-      position: absolute;
-      display: block;
-      background-color: #333333;
-      color: white;
-      border-radius: 0.5rem;
-      font-weight: normal;
-      font-size: small;
-      padding: 0.5rem;
-      min-width: 16rem;
-      left: 50%;
-      margin-left: -8rem;
-
-      p {
-        font-size: small;
-
-        &:first-child {
-          margin-top: 0;
-        }
-      }
-
-      a {
-        color: white;
-        font-size: small;
-      }
+      @include hover-over();
     }
 
     &:hover,
@@ -994,9 +1035,54 @@ th:last-child {
   }
 }
 
-.developer, .row .col:first-child {
+.developer,
+.row .col:first-child {
   .with-help .help .help-text {
     left: 0;
     margin-left: 0;
   }
+}
+
+.modal-background {
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.25s;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal {
+    position: fixed;
+
+    background-color: white;
+    min-height: 2rem;
+    border: 3px solid #5ac09e;
+    border-radius: 3px;
+    padding: 1rem;
+
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+
+    .close-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0.5rem;
+    }
+  }
+
+  &.visible {
+    z-index: 2000;
+    opacity: 1;
+  }
+}
+
+button {
+  font-feature-settings: normal;
 }
