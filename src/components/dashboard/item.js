@@ -3,6 +3,7 @@ import ApiLink from './apiLink';
 import LastChecked from './lastChecked';
 import { OrganisationLabel, DeveloperLabel } from './labelLink';
 import Title from './title';
+import SummaryButton from './summaryButton';
 
 const Item = ({ item, help }) => <div className="item">
     <h3><OrganisationLabel item={item} /></h3>
@@ -43,7 +44,7 @@ const Item = ({ item, help }) => <div className="item">
         </div>
         <div className="col">
             <span className="label"><Title help={help}>Summary</Title></span>
-            -
+            <SummaryButton summary={item.summary} />
         </div>
     </div>
 

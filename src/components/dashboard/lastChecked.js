@@ -4,7 +4,7 @@ const getTimeMessage = (n, singular) => Math.round(n) === 1 ? `${Math.round(n)} 
 
 const getTimeDiffMessage = (lastCheck) => {
     const now = Date.now();
-    const timestamp = Date.parse(lastCheck);
+    const timestamp = Date.parse(`${lastCheck}Z`);
     const diff = now - timestamp;
 
     const seconds = diff / 1000;
