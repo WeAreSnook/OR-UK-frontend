@@ -655,8 +655,8 @@ table.feeds {
 
 .format.list-items-boxed {
   ul {
-    width: calc(100vw - 60px);
     margin-left: -1rem;
+    width: calc(100vw - 2 * #{$gutter});
 
     li {
       width: calc(50% - 1rem);

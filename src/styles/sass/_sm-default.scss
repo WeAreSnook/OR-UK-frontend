@@ -1100,6 +1100,7 @@ button {
     flex-flow: wrap;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    max-width: calc(1100px - 1rem - #{$padSmall});
 
     li {
       background-color: white;
