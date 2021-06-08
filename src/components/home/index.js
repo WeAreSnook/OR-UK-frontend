@@ -27,14 +27,14 @@ function HomePage({ homePageProps, classname }) {
 
     let caseStudyLinks = [];
     caseStudyLinks.push(caseStudiesLink);
-   
+
     return (
 
         <main id="content" className="main-container">
             <div className="page-container">
                 <Section headingText={title} bodyText={body} styleName="section" />
-                <TwoColumnGrid id="right"  leftSideContent={ <InjectHtml paragraphText={introParagraph}/>}  rightSideContent={  <Video name="oruk-video" height="250" /> }/>
-               
+                <TwoColumnGrid id="right" leftSideContent={<InjectHtml paragraphText={introParagraph} />} rightSideContent={<Video name="oruk-video" height="250" />} />
+
                 {caseStudiesLink && caseStudiesLink.id && <p id="case-studies" className="card-content"><Link to={caseStudiesLink.url}>{caseStudiesLink.TextToDisplay}</Link></p>}&nbsp;
             </div>
 
@@ -48,7 +48,7 @@ function HomePage({ homePageProps, classname }) {
             </figure>}
 
             <div className="page-container">
-            
+
                 {BenefitsAndOpportunities && <InjectHtml paragraphText={BenefitsAndOpportunities} />}
 
                 {homePageProps.CommunityStatsBox && homePageProps.CommunityStatsBox.title && <Who {...homePageProps.CommunityStatsBox} />}
@@ -62,16 +62,16 @@ function HomePage({ homePageProps, classname }) {
                     </div>
                 }
                 <hr />
-                { readNextLinks &&  
-                        ( <div>
-                            <ul className="listnostyle readlinkscard">
-                              {readNextLinks.map((next, index) => { 
-                                return <ReadNextItem key={index} linkItem={next} styleName="listnostyle readlinksitem"/>
-                                })}
-                            </ul>
-                        </div>)
-        }
-       </div>
+                {readNextLinks &&
+                    (<div>
+                        <ul className="listnostyle readlinkscard">
+                            {readNextLinks.map((next, index) => {
+                                return <ReadNextItem key={index} linkItem={next} styleName="listnostyle readlinksitem" />
+                            })}
+                        </ul>
+                    </div>)
+                }
+            </div>
 
         </main>
     );
@@ -80,4 +80,5 @@ function HomePage({ homePageProps, classname }) {
 HomePage.propTypes = {
     links: PropTypes.array
 }
+
 export default HomePage;
