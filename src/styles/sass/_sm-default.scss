@@ -1091,3 +1091,23 @@ th:last-child {
 button {
   font-feature-settings: normal;
 }
+
+.format.list-items-boxed {
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    li {
+      background-color: white;
+      border: 3px solid $color-brand-20;
+      border-radius: 4px;
+      padding: 1rem;
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+  }
+}

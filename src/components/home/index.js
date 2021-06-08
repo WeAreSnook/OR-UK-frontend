@@ -49,7 +49,7 @@ function HomePage({ homePageProps, classname }) {
 
             <div className="page-container">
 
-                {BenefitsAndOpportunities && <InjectHtml paragraphText={BenefitsAndOpportunities} />}
+                {BenefitsAndOpportunities && <InjectHtml paragraphText={BenefitsAndOpportunities} sectionClassName='format list-items-boxed benefits' />}
 
                 {homePageProps.CommunityStatsBox && homePageProps.CommunityStatsBox.title && <Who {...homePageProps.CommunityStatsBox} />}
 
