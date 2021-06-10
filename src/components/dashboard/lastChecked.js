@@ -49,14 +49,18 @@ const getDateText = (lastCheck) => {
     return `${day} ${month} ${year} ${hour}:${minute}:${second}`;
 };
 
+const getSeconds = milliseconds => (milliseconds / 1000).toFixed(2);
+
 const LastChecked = ({ item }) => {
 
-    const { lastCheck } = item;
+    const { checkIsRunning, lastCheck, timeTaken } = item;
 
-    if (!lastCheck)
-        return <SummaryButton summary={item.summary} />;
+    if (checkIsRunning || !lastCheck)
+        return <span title={`Started running at ${getDateText(lastCheck)}. Not yet complete.`}>
+            Running...
+        </span>;
 
-    return <span title={getDateText(lastCheck)}>
+    return <span title={`${getDateText(lastCheck)} (took: ${getSeconds(timeTaken)}s)`}>
         {getTimeDiffMessage(lastCheck)}
     </span>;
 };
