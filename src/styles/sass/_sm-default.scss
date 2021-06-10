@@ -856,7 +856,8 @@ footer {
 
 @mixin hover-over {
   opacity: 0;
-  z-index: -1;
+  z-index: 1000;
+  pointer-events: none;
 
   transition: opacity 0.25s;
   position: absolute;
@@ -899,7 +900,7 @@ footer {
   &:focus-within {
     .message {
       opacity: 1;
-      z-index: 1000;
+      pointer-events: all;
     }
   }
 }
@@ -1006,7 +1007,7 @@ table.feeds td {
     &:focus-within {
       .help-text {
         opacity: 1;
-        z-index: 1000;
+        pointer-events: all;
       }
     }
   }
@@ -1045,7 +1046,9 @@ th:last-child {
 
 .modal-background {
   opacity: 0;
-  z-index: -1;
+  z-index: 2000;
+  pointer-events: none;
+  //z-index: -1;
   transition: opacity 0.25s;
 
   position: fixed;
@@ -1071,7 +1074,7 @@ th:last-child {
     padding: 1.4rem;
     padding-right: 2rem;
 
-    min-width: 30rem;
+    max-width: calc(100% - 1rem);
     min-height: 10rem;
 
     .close-button {
@@ -1083,8 +1086,8 @@ th:last-child {
   }
 
   &.visible {
-    z-index: 2000;
     opacity: 1;
+    pointer-events: all;
   }
 }
 
