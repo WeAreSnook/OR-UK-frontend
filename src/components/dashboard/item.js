@@ -32,7 +32,7 @@ const Item = ({ item, help }) => <div className="item">
             <IsServiceExampleValidCheckbox item={item} />
         </div>
         <div className="col">
-            <span className="label"><Title help={help}>Search enabled</Title></span>
+            <span className="label"><Title help={help}>Searchable</Title></span>
             <Checkbox isChecked={item.isSearchEnabled} errorMessage={item.searchEnabledMessage} />
         </div>
     </div>

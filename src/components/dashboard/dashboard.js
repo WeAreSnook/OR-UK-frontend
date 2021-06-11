@@ -1,5 +1,6 @@
 import Items from './items';
 import Table from './table';
+import { getDateText } from './utilities';
 import { useEffect, useState } from 'react';
 import InjectHtml from '../home/InjectHtml';
 
@@ -49,16 +50,25 @@ const Dashboard = ({ overrideData = undefined }) => {
     const [data, setData] = useState(overrideData || []);
     const [content, setContent] = useState({});
     const [help, setHelp] = useState({});
+    const [lastFetched, setLastFetched] = useState(Date.now());
 
     useEffect(() => {
         if (!!overrideData)
             return;
+
         (async () => {
             const newData = sortData((await fetchData()) || []);
             newData.sort((a, b) => (a.organisationLabel || '').localeCompare(b.organisationLabel || ''));
-            setData(newData);
+
+            const isRunning = newData.some(d => d.checkIsRunning);
+
+            if (isRunning) {
+                setTimeout(() => setLastFetched(Date.now()), 60000);
+            }
+            
+            setData(overrideData || newData);
         })();
-    }, [overrideData]);
+    }, [overrideData, lastFetched]);
 
     useEffect(() => {
         fetch(new URL(contentPath, BASE_URL).href)
@@ -74,9 +84,9 @@ const Dashboard = ({ overrideData = undefined }) => {
             .catch(err => console.error(err))
     }, []);
 
-    return <div className="page-container flex-container">
-        <main id="content" className="main-container">
-            <article className="flex-right mb-1rem">
+    return <div className='page-container flex-container'>
+        <main id='content' className='main-container'>
+            <article className='flex-right mb-1rem'>
                 <h1>{content.title}</h1>
                 <InjectHtml sectionClassName='' itemKey={`${contentSlugfield}-header`} paragraphText={content.header} />
             </article>
@@ -84,7 +94,11 @@ const Dashboard = ({ overrideData = undefined }) => {
             <Items data={data} help={help} />
             <Table data={data} help={help} />
 
-            <article className="flex-right">
+            <div className='figure-caption'>
+                {`Data fetched: ${getDateText(lastFetched)}`}
+            </div>
+
+            <article className='flex-right'>
                 <InjectHtml sectionClassName='' itemKey={`${contentSlugfield}-header`} paragraphText={content.footer} />
             </article>
         </main>

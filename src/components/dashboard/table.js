@@ -9,7 +9,7 @@ const Table = ({ data, help }) => <table className="feeds">
             <th><Title help={help}>Endpoint up</Title></th>
             <th><Title help={help}>Services feed</Title></th>
             <th><Title help={help}>{`Service {id} feed`}</Title></th>
-            <th><Title help={help}>Search enabled</Title></th>            
+            <th><Title help={help}>Searchable</Title></th>            
             <th><Title help={help}>Last checked</Title></th>
             <th><Title help={help}>Summary</Title></th>
             <th><Title help={help}>Explore</Title></th>
