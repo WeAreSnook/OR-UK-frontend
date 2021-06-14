@@ -837,13 +837,14 @@ footer {
 }
 
 .checked::before,
+.partial-checked::before,
 .unchecked::before {
   content: " ";
   display: inline-block;
   width: 16px;
   height: 16px;
   margin-bottom: 0.25rem;
-  background-image: url("../../assets/unchecked.png");
+  background-image: url("../../assets/no.svg");
   background-repeat: no-repeat;
   background-size: cover;
   vertical-align: middle;
@@ -851,7 +852,11 @@ footer {
 }
 
 .checked::before {
-  background-image: url("../../assets/checked.png");
+  background-image: url("../../assets/yes.svg");
+}
+
+.partial-checked::before {
+  background-image: url("../../assets/partial.svg");
 }
 
 @mixin hover-over {
@@ -886,10 +891,19 @@ footer {
     font-size: small;
   }
 
+  li {
+    margin-top: 0;
+    font-size: inherit;
+    padding-left: 2rem;
+    text-indent: -2rem;
+  }
+
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
+.checked,
+.partial-checked,
 .unchecked {
   .message {
     @include hover-over();

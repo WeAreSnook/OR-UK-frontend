@@ -1,4 +1,4 @@
-import Checkbox, { IsServicesValidCheckbox, IsServiceExampleValidCheckbox } from './checkbox';
+import Checkbox, { IsServicesValidCheckbox, IsServiceExampleValidCheckbox, IsSearchEnabled } from './checkbox';
 import ApiLink from './apiLink';
 import LastChecked from './lastChecked';
 import { OrganisationLabel, DeveloperLabel } from './labelLink';
@@ -33,7 +33,7 @@ const Item = ({ item, help }) => <div className="item">
         </div>
         <div className="col">
             <span className="label"><Title help={help}>Searchable</Title></span>
-            <Checkbox isChecked={item.isSearchEnabled} errorMessage={item.searchEnabledMessage} />
+            <IsSearchEnabled item={item} />
         </div>
     </div>
 
