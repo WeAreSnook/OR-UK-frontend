@@ -6,7 +6,7 @@ import PageTitle from './PageTitle';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const GenericContentPage = ({ cmsLocation, articleType }) => {
+const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
     const [article, setArticle] = useState(null);
     const [data, setData] = useState(null);
     const [isError, setIsError] = useState(null);
@@ -44,19 +44,18 @@ const GenericContentPage = ({ cmsLocation, articleType }) => {
             </Link></>)
     }
 
-    return (
-        <main id="content" className="main-container">
-            <PageTitle title={article.title} />
-            <div className="page-container flex-container">
-                <SideMenu subMenu={sectionHeadings} />
-                <article className="flex-right">
-                    <h1>{article.title}</h1>
-                    <HtmlSection sections={article.sections} />
-                    {readNextLink}
-                </article>
-            </div>
-        </main>
-    )
+    return <main id="content" className="main-container">
+        <PageTitle title={article.title} />
+        <div className="page-container flex-container">
+            <SideMenu subMenu={sectionHeadings} />
+            <article className="flex-right">
+                {!!parent && <Link className='button button-tertiary button-back' to={parent.path}>{parent.title}</Link>}
+                <h1>{article.title}</h1>
+                <HtmlSection sections={article.sections} />
+                {readNextLink}
+            </article>
+        </div>
+    </main>;
 }
 
 export default GenericContentPage;

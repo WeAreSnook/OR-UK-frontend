@@ -8,7 +8,7 @@ import Title from '../shared/title';
 import LinkWithTitleSection from "./LinkWithTitleSection";
 
 //build a picture
-const WhoIsUsing = () => {
+const WhoIsUsing = ({ parent }) => {
 
     //use styles prop
 
@@ -54,6 +54,9 @@ const WhoIsUsing = () => {
             <div className="page-container flex-container">
                 <SideMenu subMenu={getObjects(orgSections)} />
                 <article className="flex-right">
+                    
+			        {!!parent && <Link className='button button-tertiary button-back' to={parent.path}>{parent.title}</Link>}
+
                     <h1>{pageTitle}</h1>
 
                     <Numbers numbers={numbers} />

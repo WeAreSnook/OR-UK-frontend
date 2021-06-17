@@ -179,6 +179,13 @@ li {
     font-weight: $midWeight;
 }
 
+.button-tertiary {
+    border: 0;
+    background-color: $color-brand-lighter;
+    color: $color-blue-dark;
+    font-weight: $midWeight;
+}
+
 .button-light {
     background-color: white;
     -webkit-text-fill-color: $color-blue-dark;
@@ -218,7 +225,8 @@ li {
 }
 
 .button-primary,
-.button-secondary {
+.button-secondary,
+.button-tertiary {
     &:hover {
         background-color: $color-blue-darker;
         color: $color-highlight;
@@ -280,6 +288,17 @@ li {
         }
     }
 }
+
+.button-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    &::before {
+        content: '←';
+        display: inline-block;
+        padding-right: 1rem;
+    }
+}
+
 .button-header.active {
     background-color: $color-blue-dark;
     color: white;
