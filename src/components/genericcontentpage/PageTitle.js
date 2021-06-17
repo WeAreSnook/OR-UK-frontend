@@ -4,7 +4,7 @@ const mainTitle = `Open Referral UK`;
 
 const PageTitle = ({ title }) => {
     useEffect(() => {
-        document.title = `${mainTitle}${!!title ? ` - ${title}` : ''}`;
+        document.title = `${!!title ? `${title} | ` : ''}${mainTitle}`;
         
         return () => {
             document.title = mainTitle;

@@ -74,9 +74,7 @@ const WhoIsUsing = () => {
                                 <CardList key={organisation.id} organisationList={organisation.Organisation} type="org" />
                             </ul>
                         </Fragment>
-
-                    })
-                    }
+                    })}
 
                     <LinkWithTitleSection {...registerLinkWithTitle} />
 
