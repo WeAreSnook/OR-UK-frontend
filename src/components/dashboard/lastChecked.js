@@ -9,7 +9,7 @@ const LastChecked = ({ item }) => {
     const time = getTimeTaken(timeTaken);
 
     if (checkIsRunning || !lastCheck)
-        return <span title={`Started running at ${date} (${diff}).`}>Running...</span>;
+        return <span title={`Started check at ${date} (${diff}).`}>Checking...</span>;
 
     return <span title={`${date} (took: ${time})`}>{diff}</span>;
 };

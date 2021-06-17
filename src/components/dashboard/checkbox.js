@@ -1,4 +1,4 @@
-const LinkLabel = ({ label, url }) => !!url ? <a href={url} target='_blank'>{label}</a> : <span>{label}</span>;
+const LinkLabel = ({ label, url }) => !!url ? <a href={url} target='_blank' rel='noreferrer'>{label}</a> : <span>{label}</span>;
 
 const Checked = ({ label, url, message, cssClassName = '' }) => <div className={`checked ${cssClassName}`}><LinkLabel {...{ label, url }} />  {!!message && <div className='message'>{message}</div>}</div>;
 const PartialChecked = ({ label, url, message, cssClassName = '' }) => <div className={`partial-checked ${cssClassName}`} tabIndex='0'><LinkLabel {...{ label, url }} /> {!!message && <div className='message'>{message}</div>}</div>;

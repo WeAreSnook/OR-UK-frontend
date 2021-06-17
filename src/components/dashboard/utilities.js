@@ -47,10 +47,14 @@ export const getDateText = (utcDate) => {
 };
 
 export const getTimeTaken = milliseconds => {
-    if (milliseconds < 60000)
-        return `${(milliseconds / 1000).toFixed(2)} seconds`;
+    const seconds = (milliseconds / 1000).toFixed(2);
 
-    return `${Math.round(milliseconds / 60000)} minutes`;
+    if (milliseconds < 60000)
+        return `${seconds} second${seconds === 1 ? '' : 's'}`;
+
+    const minutes = Math.round(milliseconds / 60000);
+
+    return `${minutes} minute${minutes === 1 ? '' : 's'}`;
 };
 
 export const dbStringToUtc = dbString => Date.parse(`${dbString}.000Z`);

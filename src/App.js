@@ -20,6 +20,22 @@ import Dashboard from './components/dashboard/dashboard';
 import mockData from './components/dashboard/mockData';
 import Preview from './components/preview/preview';
 
+const PageTitle = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (!location)
+            return;
+
+        switch (location.pathname) {
+            default:
+                document.title = `Open Referral UK`;
+        }
+    }, [location, location.pathname]);
+
+    return <></>;
+};
+
 //refactor
 //pull data as needed perhaps on first call of page?
 function App() {
@@ -38,6 +54,27 @@ function App() {
 
     let [{ data, isFetching, isError }] = useOukapi(`${BASE_URL}${REACT_APP_FOOTER}`)
     const footerProps = data;
+
+    const routes = [
+        { exact: true, path: "/", title: '', render: () => (<HomePage homePageProps={homeProps} classname="main" />) },
+        { path: "/about-standard", title: 'About standard', render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
+        { path: "/how-it-works/:slugField", title: 'How it works', render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" /> },
+        { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" /> },
+        { path: "/community/case-studies/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" /> },
+        { path: "/community/case-studies", render: () => <CaseStudiesLandingPage styleName="main" /> },
+        { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" /> },
+        { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" /> },
+        { path: "/standard-community", render: () => <WhoIsUsing styleName="main" /> },
+        { path: "/accessibility-statement", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
+        { path: "/privacy-policy", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
+        { path: "/terms-conditions", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
+        { path: "/show-error", component: GenericErrorPage },
+        { path: "/open-referral-uk-video-transcript", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
+        { path: "/dashboard", render: () => <Dashboard /> },
+        { path: "/devdashboard", render: () => <Dashboard overrideData={mockData} /> },
+        { path: "/preview", render: () => <Preview /> },
+        { path: "/404", component: NotFound }
+    ];
 
     useEffect(() => {
         // fetch from strapi
@@ -77,13 +114,15 @@ function App() {
         !isFetching && !isError && Object.keys(homeProps).length > 0 &&
 
         (<>
-
             <SkipToContent />
+            <PageTitle />
             <Header mainMenu={mainMenu} topMenuId={topMenuId.toString()} />
 
             <div className="page-wrapper">
                 <Switch>
-                    <Route exact path="/" render={() => (<HomePage homePageProps={homeProps} classname="main" />)} />
+                    {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} component={r.component} render={r.render} />)}
+
+                    {/* <Route exact path="/" render={() => (<HomePage homePageProps={homeProps} classname="main" />)} />
                     <Route path="/about-standard" render={() => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" />} />
                     <Route path="/how-it-works/:slugField" render={({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" />} />
                     <Route path="/how-it-works" render={() => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" />} />
@@ -100,15 +139,12 @@ function App() {
                     <Route path="/dashboard" render={() => <Dashboard />} />
                     <Route path="/devdashboard" render={() => <Dashboard overrideData={mockData} />} />
                     <Route path="/preview" render={() => <Preview />} />
-                    <Route path="/404" component={NotFound} />
+                    <Route path="/404" component={NotFound} /> */}
                     <Redirect to="/404" />
                 </Switch>
             </div>
             <Footer footerProps={footerProps} styleName="footer" />
-
-
         </>)
-
     );
 }
 

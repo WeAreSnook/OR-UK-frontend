@@ -9,7 +9,7 @@ const cleanMarkup = (dirtyUnsafe) => {
     return sanitizedParam;
 };
 
-const correctImgPath = (html) => html.replace(/src="\/uploads\/(.*)"/mg, `src="${BASE_URL}\/uploads\/$1"`);
+const correctImgPath = (html) => html.replace(/src="\/uploads\/(.*)"/mg, `src="${BASE_URL}/uploads/$1"`);
 
 const InjectHtml = ({ paragraphText, itemKey, sectionClassName='format' } ) => 
     <section key={itemKey} className={sectionClassName} dangerouslySetInnerHTML={{ __html: correctImgPath(cleanMarkup(paragraphText)) }}></section>;

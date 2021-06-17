@@ -1,10 +1,9 @@
 import React from 'react';
 
-const NotFound = () => {
-    return (
-        <main id="content" className="main" role="main" aria-label="main">
+const NotFound = () => <main id="content" className="main" role="main" aria-label="main">
+    <div className='page-container flex-container'>
         <p>Page not found</p>
-    </main>
-    )
-}
+    </div>
+</main>;
+
 export default NotFound;
