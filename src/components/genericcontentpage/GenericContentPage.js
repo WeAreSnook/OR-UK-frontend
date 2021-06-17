@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import HtmlSection from '../htmlsection';
 import SideMenu from '../sidemenu';
 import { Link } from 'react-router-dom';
+import PageTitle from './PageTitle';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const GenericContentPage = ({ cmsLocation, articleType }) => {
@@ -44,6 +46,7 @@ const GenericContentPage = ({ cmsLocation, articleType }) => {
 
     return (
         <main id="content" className="main-container">
+            <PageTitle title={article.title} />
             <div className="page-container flex-container">
                 <SideMenu subMenu={sectionHeadings} />
                 <article className="flex-right">

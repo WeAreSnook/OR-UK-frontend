@@ -46,7 +46,8 @@ const WhoIsUsing = () => {
     //need id make sure all keys set
     console.log(id);
 
-    if (isFetching || isError) return null;
+    if (isFetching || isError)
+        return null;
 
     return (
         <main id="content" className="main-container">

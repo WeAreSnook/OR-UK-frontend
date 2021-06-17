@@ -20,21 +20,21 @@ import Dashboard from './components/dashboard/dashboard';
 import mockData from './components/dashboard/mockData';
 import Preview from './components/preview/preview';
 
-const PageTitle = () => {
-    const location = useLocation();
+// const PageTitle = () => {
+//     const location = useLocation();
 
-    useEffect(() => {
-        if (!location)
-            return;
+//     useEffect(() => {
+//         if (!location)
+//             return;
 
-        switch (location.pathname) {
-            default:
-                document.title = `Open Referral UK`;
-        }
-    }, [location, location.pathname]);
+//         switch (location.pathname) {
+//             default:
+//                 document.title = `Open Referral UK`;
+//         }
+//     }, [location, location.pathname]);
 
-    return <></>;
-};
+//     return <></>;
+// };
 
 //refactor
 //pull data as needed perhaps on first call of page?
@@ -56,9 +56,9 @@ function App() {
     const footerProps = data;
 
     const routes = [
-        { exact: true, path: "/", title: '', render: () => (<HomePage homePageProps={homeProps} classname="main" />) },
-        { path: "/about-standard", title: 'About standard', render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
-        { path: "/how-it-works/:slugField", title: 'How it works', render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" /> },
+        { exact: true, path: "/", render: () => (<HomePage homePageProps={homeProps} classname="main" />) },
+        { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
+        { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" /> },
         { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" /> },
         { path: "/community/case-studies/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" /> },
         { path: "/community/case-studies", render: () => <CaseStudiesLandingPage styleName="main" /> },
@@ -115,7 +115,6 @@ function App() {
 
         (<>
             <SkipToContent />
-            <PageTitle />
             <Header mainMenu={mainMenu} topMenuId={topMenuId.toString()} />
 
             <div className="page-wrapper">

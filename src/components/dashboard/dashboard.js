@@ -3,6 +3,7 @@ import Table from './table';
 import { getDateText } from './utilities';
 import { useEffect, useState } from 'react';
 import InjectHtml from '../home/InjectHtml';
+import PageTitle from '../genericcontentpage/PageTitle';
 
 const apiUrl = 'https://validator.openreferraluk.org/api';
 
@@ -86,6 +87,7 @@ const Dashboard = ({ overrideData = undefined }) => {
 
     return <div className='page-container flex-container'>
         <main id='content' className='main-container'>
+            <PageTitle title={content.title} />
             <article className='flex-right mb-1rem'>
                 <h1>{content.title}</h1>
                 <InjectHtml sectionClassName='' itemKey={`${contentSlugfield}-header`} paragraphText={content.header} />

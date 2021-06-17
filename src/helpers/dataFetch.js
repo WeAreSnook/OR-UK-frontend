@@ -23,13 +23,13 @@ const useOukapi = (urlParam) => {
                     setIsFetching(false)
 
                 }
-
             } catch (error) {
                 console.log("any errors?", error);
                 setIsError(true);
                 setIsFetching(false);
             }
         }
+        
         fetchContent();
 
     }, [url, urlParam]);
