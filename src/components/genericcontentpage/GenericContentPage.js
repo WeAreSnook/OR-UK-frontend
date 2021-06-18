@@ -3,6 +3,7 @@ import HtmlSection from '../htmlsection';
 import SideMenu from '../sidemenu';
 import { Link } from 'react-router-dom';
 import PageTitle from './PageTitle';
+import BackButton from './BackButton';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -49,7 +50,7 @@ const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
         <div className="page-container flex-container">
             <SideMenu subMenu={sectionHeadings} />
             <article className="flex-right">
-                {!!parent && <Link className='button button-tertiary button-back' to={parent.path}>{parent.title}</Link>}
+                <BackButton parent={parent} />
                 <h1>{article.title}</h1>
                 <HtmlSection sections={article.sections} />
                 {readNextLink}

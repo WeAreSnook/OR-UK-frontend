@@ -6,6 +6,7 @@ import useOukapi from '../../helpers/dataFetch';
 import CardList from './Cards/CardList';
 import Title from '../shared/title';
 import LinkWithTitleSection from "./LinkWithTitleSection";
+import BackButton from '../genericcontentpage/BackButton';
 
 //build a picture
 const WhoIsUsing = ({ parent }) => {
@@ -53,9 +54,8 @@ const WhoIsUsing = ({ parent }) => {
         <main id="content" className="main-container">
             <div className="page-container flex-container">
                 <SideMenu subMenu={getObjects(orgSections)} />
-                <article className="flex-right">
-                    
-			        {!!parent && <Link className='button button-tertiary button-back' to={parent.path}>{parent.title}</Link>}
+                <article className="flex-right">                    
+                    <BackButton parent={parent} />
 
                     <h1>{pageTitle}</h1>
 
