@@ -4,14 +4,15 @@ import SideMenu from '../sidemenu';
 import { Link } from 'react-router-dom';
 import PageTitle from './PageTitle';
 import BackButton from './BackButton';
+import NotFound from '../errorpage';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
     const [article, setArticle] = useState(null);
+    const [isNotFound, setIsNotFound] = useState(false);
     const [data, setData] = useState(null);
     const [isError, setIsError] = useState(null);
-
     const [sectionHeadings, setSectionHeadings] = useState([]);
 
     useEffect(() => {
@@ -23,9 +24,16 @@ const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
 
     useEffect(() => {
         // check we have data, no error, and if data is array, array has elements
-        if (data && !isError && (!Array.isArray(data) || data.length)) {
-            const pageData = Array.isArray(data) ? data[0] : data;
-            setArticle(pageData[articleType])
+
+        if (data && !isError) {
+            if ((!Array.isArray(data) || data.length)) {
+                const pageData = Array.isArray(data) ? data[0] : data;
+                setArticle(pageData[articleType]);
+                setIsNotFound(false);
+            }
+            else {
+                setIsNotFound(true);
+            }
         };
 
         if (article) {
@@ -34,7 +42,10 @@ const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
 
     }, [article, data, isError, articleType]);
 
-    if (isError || !article)
+    if (isError || isNotFound)
+        return <NotFound parent={{ path: `/community/case-studies`, title: `Case studies` }} />;
+
+    if (!article)
         return null;
 
     let readNextLink = <></>
@@ -42,7 +53,7 @@ const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
         readNextLink = (<><hr />
             <Link to={article.ReadNextLink.url}>
                 {article.ReadNextLink.TextToDisplay}
-            </Link></>)
+            </Link></>);
     }
 
     return <main id="content" className="main-container">

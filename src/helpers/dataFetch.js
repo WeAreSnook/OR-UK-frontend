@@ -19,23 +19,21 @@ const useOukapi = (urlParam) => {
             try {
                 const response = await fetch(url);
                 if (response.status === 200) {
-                    setData(await response.json())
-                    setIsFetching(false)
-
+                    setData(await response.json());
+                    setIsFetching(false);
                 }
             } catch (error) {
-                console.log("any errors?", error);
+                console.log('any errors?', error);
                 setIsError(true);
                 setIsFetching(false);
             }
-        }
+        };
         
         fetchContent();
 
     }, [url, urlParam]);
 
-    console.log("any data?", data);    
-    return [{ data, isError }, isFetching, setUrl]
+    return [{ data, isError }, isFetching, setUrl];
 };
 
 export default useOukapi;
