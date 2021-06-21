@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import InjectHtml from '../home/InjectHtml';
 
 const covertHeadingToCssClassName = heading => {
-    if (!!heading || typeof heading !== 'string')
+    if (!heading || typeof heading !== 'string')
         return null;    
     return heading.toLowerCase().replace(/\s/g, '-');
 };
@@ -16,10 +16,10 @@ const HtmlSection = ({ sections }) => {
 
         const sectionClassName = covertHeadingToCssClassName(item.sectionHeading);
 
-        return <Fragment key={item.id}>
+        return <div key={item.id} className={sectionClassName}>
             {header}
-            <InjectHtml itemKey={`${index}body`} sectionClassName={sectionClassName} paragraphText={item.sectionBody} />
-        </Fragment>
+            <InjectHtml itemKey={`${index}body`} paragraphText={item.sectionBody} />
+        </div>
     });
 }
 export default HtmlSection;
