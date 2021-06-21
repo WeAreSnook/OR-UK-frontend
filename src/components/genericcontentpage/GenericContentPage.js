@@ -8,7 +8,7 @@ import NotFound from '../errorpage';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
+const GenericContentPage = ({ cmsLocation, articleType, parent, articleClassName }) => {
     const [article, setArticle] = useState(null);
     const [isNotFound, setIsNotFound] = useState(false);
     const [data, setData] = useState(null);
@@ -58,16 +58,18 @@ const GenericContentPage = ({ cmsLocation, articleType, parent }) => {
 
     return <main id="content" className="main-container">
         <PageTitle title={article.title} />
-        <div className="page-container flex-container">
+        <div className={`page-container flex-container`}>
             <SideMenu subMenu={sectionHeadings} />
-            <article className="flex-right">
+            <article className={`flex-right ${articleClassName}`}>
                 <BackButton parent={parent} />
                 <h1>{article.title}</h1>
-                <HtmlSection sections={article.sections} />
+                <div className="body">
+                    <HtmlSection sections={article.sections} />
+                </div>
                 {readNextLink}
             </article>
         </div>
     </main>;
-}
+};
 
 export default GenericContentPage;

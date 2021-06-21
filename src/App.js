@@ -82,7 +82,7 @@ function App() {
         { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
         { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} /> },
         { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" /> },
-        { path: "/community/case-studies/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" parent={{ path: `/community/case-studies`, title: `Case studies` }} /> },
+        { path: "/community/case-studies/:slugField", render: ({ match }) => <GenericContentPage articleClassName="case-study" cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" parent={{ path: `/community/case-studies`, title: `Case studies` }} /> },
         { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
         { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" /> },
         { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" /> },
