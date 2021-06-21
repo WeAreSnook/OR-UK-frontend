@@ -165,6 +165,8 @@ hr {
   -ms-grid-row-span: 0;
   grid-row-end: 6;
   padding: 1.5rem 0;
+  grid-column: 2;
+  grid-row: 6;
 
   #learngrid {
     display: -ms-grid;
@@ -594,6 +596,8 @@ hr {
 .card-link-container li:nth-child(7) {
   -ms-grid-column: 1;
   -ms-grid-row: 4;
+  grid-column: 1;
+  grid-row: 4;
 }
 
 .card-link-container li:nth-child(8) {
@@ -668,5 +672,37 @@ table.feeds {
 .modal-background {
   .modal {
     max-width: 900px;
+  }
+}
+
+.modal {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  padding: $padLarge 10px 0;
+
+  a { color: inherit; }
+
+  button {
+    margin: 10px;
+    font-family: inherit;
+  }
+  .restrict {
+    max-width: 65%;
+  }
+
+  #cookietextwrapper {
+   flex-direction: column;
+   max-width: 50%;
+   color: white;
+  }
+
+  .cookiemessage{
+    padding:1em;
   }
 }

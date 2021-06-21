@@ -1199,7 +1199,6 @@ button {
 
 .modal {
     display: flex;
-    margin-top: 5rem;
     background: $color-brand-darker;
     border: 1px solid #cccccc;
     box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
@@ -1222,6 +1221,19 @@ button {
     }
 }
 
+.case-study {
+    figure.image {
+        img {
+            width: 100%;
+            border: solid 3px $color-brand;
+            border-radius: 0.3rem;
+        }
+    }
+
+    .cookiemessage {
+        padding: 1em;
+    }
+}
 
 .case-study {
     figure.image {
