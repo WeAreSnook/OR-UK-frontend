@@ -14,6 +14,8 @@ import WhoIsUsing from "./components/whoisusing";
 import GenericContentPage from './components/genericcontentpage/GenericContentPage';
 import CaseStudiesLandingPage from './components/casestudies/LandingPage';
 import SkipToContent from './components/header/SkipToContent';
+import CookieBanner from './components/shared/cookiebanner/';
+import { useCookies } from 'react-cookie';
 
 //refactor
 //pull data as needed perhaps on first call of page?
@@ -23,13 +25,33 @@ function App() {
   const [homeProps, setHomeProps] = useState({});
   const [topMenuId, setTopMenuId] = useState('');
   const [mainMenu, setMainMenu] = useState([]);
-  const [errors] = useState({});  //use to confirm render component or error page
+  //const [errors] = useState({});  use to confirm render component or error page
 
   const BASE_URL  = process.env.REACT_APP_BASE_URL;
   const ABOUT_PAGE = process.env.REACT_APP_ABOUT_PAGE_URI;
   const CONTACT_PAGE = process.env.REACT_APP_CONTACT_PAGE;
-  const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER
-  console.log(errors);  //take care of on refactor
+  const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER;
+  const REACT_COOKIE_ID = process.env.REACT_APP_COOKIE_ID;
+
+  const [cookies, setCookie] = useCookies(['']);
+  const [showBanner, setShowBanner] = useState(true);
+
+  const handleAccept = () => {
+      const cookieID = REACT_COOKIE_ID ? REACT_COOKIE_ID : "openreferralukorg";
+      setCookie(cookieID,"capture?", { path: '/'} );
+      setShowBanner(false);
+  }
+
+  const handleReject = () => {
+    setShowBanner(false);
+}
+  
+  useEffect(() => {
+      if (cookies && cookies.hasOwnProperty("openreferralukorg")) {
+          setShowBanner(false);
+      }
+  
+  },[cookies, setShowBanner]);
 
   let [{data, isFetching, isError}] = useOukapi(`${BASE_URL}${REACT_APP_FOOTER}`)
   const footerProps = data;
@@ -75,6 +97,7 @@ function App() {
     (<>
       
     <SkipToContent/>
+    <CookieBanner isVisible={showBanner} onClick={{accept: handleAccept, reject: handleReject}}/>
     <Header mainMenu={mainMenu} topMenuId={topMenuId.toString()} />
         
         <div className="page-wrapper">
