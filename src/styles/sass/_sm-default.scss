@@ -1202,6 +1202,7 @@ button {
     background: $color-brand-darker;
     border: 1px solid #cccccc;
     box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
+    padding: 10px;
 
     a {
         color: inherit;
@@ -1209,6 +1210,7 @@ button {
 
     button {
         font-family: inherit;
+        margin-bottom: 10px;
     }
 
     #cookietextwrapper {
