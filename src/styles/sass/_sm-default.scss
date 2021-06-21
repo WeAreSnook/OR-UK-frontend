@@ -1196,3 +1196,28 @@ button {
     color: #999999;
     text-align: right;
 }
+
+.modal {
+    display: flex;
+    margin-top: 5rem;
+    background: $color-brand-darker;
+    border: 1px solid #cccccc;
+    box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
+  
+    a { color: inherit; }
+  
+    button {
+      font-family: inherit;
+    }
+  
+    #cookietextwrapper {
+     color: white;
+    }
+  
+    #rejectTracking {
+      border: 3px solid $color-white;
+      background-color: $color-brand-darker;
+    }
+  
+  }
+  

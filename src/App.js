@@ -19,6 +19,8 @@ import SkipToContent from './components/header/SkipToContent';
 import Dashboard from './components/dashboard/dashboard';
 import mockData from './components/dashboard/mockData';
 import Preview from './components/preview/preview';
+import CookieBanner from './components/shared/cookiebanner/';
+import { useCookies } from 'react-cookie';
 
 // const PageTitle = () => {
 //     const location = useLocation();
@@ -49,7 +51,27 @@ function App() {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const ABOUT_PAGE = process.env.REACT_APP_ABOUT_PAGE_URI;
     const CONTACT_PAGE = process.env.REACT_APP_CONTACT_PAGE;
-    const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER
+    const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER;
+  
+    const [cookies, setCookie] = useCookies(['']);
+    const [showBanner, setShowBanner] = useState(true);
+  
+    const handleAccept = () => {
+        setCookie("openreferralukorg","capture?", { path: '/'} );
+        setShowBanner(false);
+    }
+  
+    const handleReject = () => {
+      setShowBanner(false);
+  }
+  
+    useEffect(() => {
+        if (cookies && cookies.hasOwnProperty("openreferralukorg")) {
+            setShowBanner(false);
+        }
+  
+    },[cookies, setShowBanner]);
+
     console.log(errors);  //take care of on refactor
 
     let [{ data, isFetching, isError }] = useOukapi(`${BASE_URL}${REACT_APP_FOOTER}`)
@@ -115,6 +137,7 @@ function App() {
 
         (<>
             <SkipToContent />
+            <CookieBanner isVisible={showBanner} onClick={{accept: handleAccept, reject: handleReject}}/>
             <Header mainMenu={mainMenu} topMenuId={topMenuId.toString()} />
 
             <div className="page-wrapper">
