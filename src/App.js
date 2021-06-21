@@ -57,16 +57,17 @@ function App() {
     const [showBanner, setShowBanner] = useState(true);
   
     const handleAccept = () => {
-        setCookie("openreferralukorg","capture?", { path: '/'} );
+        setCookie("openreferralukorg","", { path: '/'} );
         setShowBanner(false);
     }
   
     const handleReject = () => {
+      setCookie("hidecookienotify","", { path: '/'} );
       setShowBanner(false);
   }
   
     useEffect(() => {
-        if (cookies && cookies.hasOwnProperty("openreferralukorg")) {
+        if (cookies && (cookies.hasOwnProperty("openreferralukorg") || cookies.hasOwnProperty("hidecookienotify"))) {
             setShowBanner(false);
         }
   

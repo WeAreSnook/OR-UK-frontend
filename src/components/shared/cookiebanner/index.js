@@ -8,7 +8,7 @@ const CookieBanner = ({isVisible, onClick}) => {
     return  isVisible  ? (<>
     <section className="modal">
     <div id="cookietextwrapper">
-      <div>
+      <div className="cookiemessage">
                     <h2>Cookies on Open Referral UK</h2>
                     <p>We use some essential cookies to make this service work.</p>
 

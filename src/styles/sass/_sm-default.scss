@@ -1199,7 +1199,6 @@ button {
 
 .modal {
     display: flex;
-    margin-top: 5rem;
     background: $color-brand-darker;
     border: 1px solid #cccccc;
     box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
@@ -1219,5 +1218,8 @@ button {
       background-color: $color-brand-darker;
     }
   
+    .cookiemessage{
+        padding:1em;
+      }
   }
   
