@@ -1,3 +1,39 @@
+# Release procedure
+
+openreferraluk.org
+
+This is a static website with files in s3, with cloudfront infront of that.
+
+s3 urls are (both under the default aws account):
+live: https://s3.console.aws.amazon.com/s3/buckets/openreferraluk.org?region=eu-west-1&tab=objects
+beta: https://s3.console.aws.amazon.com/s3/buckets/beta.openreferraluk.org?region=eu-west-1&tab=objects
+
+(I think it should be possible to use something like winscp to access these files)
+
+cloudfront urls are:
+live: https://console.aws.amazon.com/cloudfront/home?region=eu-west-1#distribution-settings:E3BY8BZ5S0INQ8
+beta: https://console.aws.amazon.com/cloudfront/home?region=eu-west-1#distribution-settings:E3HQWFOMPGY71A
+
+
+To release:
+
+git pull
+npm i
+npm run build
+
+static build files will output to \build
+
+copy those over the s3 bucket
+(each time we build, the js and css files have a different name. On beta we currently have a growing list of js files that could be deleted. The most important file that gets overwritten is the index.html which references those js/css files.)
+
+to clear the cache,
+go to the cloudfront
+invalidations tab
+copy an existing invalidation (you only need to invalidate /index.html)
+invalidate
+
+invalidations cost money, and amazon recomend doing it otherways. I haven't really understood those otherways.
+
 #  Open Referral UK
 The Open Referral UK data standard is a consistent way of recording and sharing information about services. 
 
