@@ -35,7 +35,7 @@ const CaseStudyRelatedLink = ({ link }) => {
             <h2 className='case-study-heading'>Share your case study about adopting Open Referral UK?</h2>
             
             <div>
-                <a href="mailto:support@esd.org.uk" class="button button-primary">Contact us to share your case studies</a> 
+                <a href="mailto:hello@openreferraluk.org" class="button button-primary">Contact us to share your case studies</a> 
             </div>
         </div>
     </>;
