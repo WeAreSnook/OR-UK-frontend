@@ -1,22 +1,26 @@
 import { Fragment } from 'react';
 import InjectHtml from '../home/InjectHtml';
 
-const HtmlSection = ({sections}) => {
+const covertHeadingToCssClassName = heading => {
+    if (!heading || typeof heading !== 'string')
+        return null;    
+    return heading.toLowerCase().replace(/\s/g, '-');
+};
 
-    return ( 
+const HtmlSection = ({ sections }) => {
 
-        sections.map((item, index) => {
+    return sections.map((item, index) => {
+        const header = item.sectionHeading
+            ? <h2 id={`section-${index + 1}-heading`}><InjectHtml itemKey={`${index}head`} paragraphText={item.sectionHeading} /></h2>
+            : null;
 
-        let header = <></>
-        if (item.sectionHeading){
-            header = <><h2 id={`section-${index+1}-heading`}><InjectHtml itemKey={`${index}head`} paragraphText={item.sectionHeading}/></h2></>
-        }
-        return <Fragment key={item.id}>
-             {header}  
-             <InjectHtml itemKey={`${index}body`} paragraphText={item.sectionBody}/>
-         </Fragment>
-        })
-        )
-    }
-    export default HtmlSection;
+        const sectionClassName = covertHeadingToCssClassName(item.sectionHeading);
+
+        return <div key={item.id} className={sectionClassName}>
+            {header}
+            <InjectHtml itemKey={`${index}body`} paragraphText={item.sectionBody} />
+        </div>
+    });
+}
+export default HtmlSection;
 

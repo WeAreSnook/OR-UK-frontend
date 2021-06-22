@@ -14,6 +14,7 @@ import HomePage from "./components/home";
 import GenericLandingPage from "./components/genericlandingpage/GenericLandingPage";
 import WhoIsUsing from "./components/whoisusing";
 import GenericContentPage from './components/genericcontentpage/GenericContentPage';
+import CaseStudyPage from './components/genericcontentpage/CaseStudyPage';
 import LandingPage from './components/casestudies/LandingPage';
 import SkipToContent from './components/header/SkipToContent';
 import Dashboard from './components/dashboard/dashboard';
@@ -83,7 +84,7 @@ function App() {
         { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
         { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} /> },
         { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" /> },
-        { path: "/community/case-studies/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" parent={{ path: `/community/case-studies`, title: `Case studies` }} /> },
+        { path: "/community/case-studies/:slugField", render: ({ match }) => <CaseStudyPage slugField={match.params.slugField} /> },
         { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
         { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" /> },
         { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" /> },
@@ -144,25 +145,6 @@ function App() {
             <div className="page-wrapper">
                 <Switch>
                     {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} component={r.component} render={r.render} />)}
-
-                    {/* <Route exact path="/" render={() => (<HomePage homePageProps={homeProps} classname="main" />)} />
-                    <Route path="/about-standard" render={() => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" />} />
-                    <Route path="/how-it-works/:slugField" render={({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" />} />
-                    <Route path="/how-it-works" render={() => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" />} />
-                    <Route path="/community/case-studies/:slugField" render={({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" />} />
-                    <Route path="/community/case-studies" render={() => <CaseStudiesLandingPage styleName="main" />} />
-                    <Route path="/community" render={() => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" />} />
-                    <Route path="/contact-us" render={() => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" />} />
-                    <Route path="/standard-community" render={() => <WhoIsUsing styleName="main" />} />
-                    <Route path="/accessibility-statement" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
-                    <Route path="/privacy-policy" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
-                    <Route path="/terms-conditions" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
-                    <Route path="/show-error" component={GenericErrorPage} />
-                    <Route path="/open-referral-uk-video-transcript" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
-                    <Route path="/dashboard" render={() => <Dashboard />} />
-                    <Route path="/devdashboard" render={() => <Dashboard overrideData={mockData} />} />
-                    <Route path="/preview" render={() => <Preview />} />
-                    <Route path="/404" component={NotFound} /> */}
                     <Redirect to="/404" />
                 </Switch>
             </div>
