@@ -293,7 +293,7 @@ li {
     display: inline-block;
     margin-bottom: 2rem;
     &::before {
-        content: '\27F5';
+        content: "\27F5";
         display: inline-block;
         padding-right: 1rem;
     }
@@ -1155,7 +1155,7 @@ button {
         }
 
         li::before {
-            content: '';
+            content: "";
             width: 3.2rem;
             height: 3.2rem;
             background-color: red;
@@ -1168,23 +1168,23 @@ button {
         }
 
         li:first-child::before {
-            background-image: url('https://admin.beta.openreferraluk.org/uploads/benefit_1_168f8ec4a7.png');
+            background-image: url("https://admin.beta.openreferraluk.org/uploads/benefit_1_168f8ec4a7.png");
         }
 
         li:nth-child(2)::before {
-            background-image: url('https://admin.beta.openreferraluk.org/uploads/benefit_2_b202ff488b.png');
+            background-image: url("https://admin.beta.openreferraluk.org/uploads/benefit_2_b202ff488b.png");
         }
 
         li:nth-child(3)::before {
-            background-image: url('https://admin.beta.openreferraluk.org/uploads/benefit_3_626aecd35d.png');
+            background-image: url("https://admin.beta.openreferraluk.org/uploads/benefit_3_626aecd35d.png");
         }
 
         li:nth-child(4)::before {
-            background-image: url('https://admin.beta.openreferraluk.org/uploads/benefit_4_53918f4c87.png');
+            background-image: url("https://admin.beta.openreferraluk.org/uploads/benefit_4_53918f4c87.png");
         }
 
         li:nth-child(5)::before {
-            background-image: url('https://admin.beta.openreferraluk.org/uploads/benefit_5_7b8f392678.png');
+            background-image: url("https://admin.beta.openreferraluk.org/uploads/benefit_5_7b8f392678.png");
         }
 
         // https://admin.beta.openreferraluk.org/uploads/benefit_1_168f8ec4a7.png
@@ -1197,31 +1197,33 @@ button {
     text-align: right;
 }
 
-.modal {
+.cookiemessage-modal {
     display: flex;
     background: $color-brand-darker;
     border: 1px solid #cccccc;
     box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
-  
-    a { color: inherit; }
-  
-    button {
-      font-family: inherit;
-      margin:0;
-      margin-top:10px;
+
+    a {
+        color: inherit;
     }
-  
+
     #cookietextwrapper {
-     color: white;
+        color: white;
     }
-  
+
     #rejectTracking {
-      border: 3px solid $color-white;
-      background-color: $color-brand-darker;
+        border: 3px solid $color-white;
+        background-color: $color-brand-darker;
     }
-  
-    .cookiemessage{
-        padding:1em;
-      }
-  }
-  
+
+    .cookiemessage {
+        padding: 1em;
+
+        .cookiemessage-buttons {
+            button {
+                margin: 10px 10px 0 0;
+                font-family: inherit;
+            }
+        }
+    }
+}

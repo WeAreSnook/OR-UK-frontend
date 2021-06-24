@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const CookieBanner = ({ isVisible, onClick }) => {
 
     return isVisible ? (<>
-        <section className="modal">
+        <section className="cookiemessage-modal">
             <div id="cookietextwrapper">
                 <div className="cookiemessage">
                     <h2>Cookies on Open Referral UK</h2>

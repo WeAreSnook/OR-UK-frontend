@@ -675,7 +675,7 @@ table.feeds {
     }
 }
 
-.modal {
+.cookiemessage-modal {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -688,11 +688,7 @@ table.feeds {
     a {
         color: inherit;
     }
-
-    button {
-        margin: 10px;
-        font-family: inherit;
-    }
+    
     .restrict {
         max-width: 65%;
     }
@@ -705,9 +701,5 @@ table.feeds {
 
     .cookiemessage {
         padding: 1em;
-
-        .cookiemessage-buttons {
-            margin-left: -10px;
-        }
     }
 }
