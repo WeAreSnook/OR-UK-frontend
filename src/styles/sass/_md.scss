@@ -706,8 +706,8 @@ table.feeds {
     .cookiemessage {
         padding: 1em;
 
-        button:first-child {
-            margin-left: 0;
+        .cookiemessage-buttons {
+            margin-left: -10px;
         }
     }
 }
