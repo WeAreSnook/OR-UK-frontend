@@ -23,25 +23,37 @@ import Preview from './components/preview/preview';
 import CookieBanner from './components/shared/cookiebanner/';
 import { useCookies } from 'react-cookie';
 
-// const PageTitle = () => {
-//     const location = useLocation();
+const cookieExists = (name) => {
+    var re = new RegExp(name + '=');
+    var value = re.exec(document.cookie);
+    return (value !== null);
+};
 
-//     useEffect(() => {
-//         if (!location)
-//             return;
+const initGoogleAnalytics = () => {
+    console.log('google analytics enabled');
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T869DN6');
+};
 
-//         switch (location.pathname) {
-//             default:
-//                 document.title = `Open Referral UK`;
-//         }
-//     }, [location, location.pathname]);
-
-//     return <></>;
-// };
+const initGoogleAnalyticsIfCookie = () => {
+    if (!cookieExists('openreferralukorg'))
+        return;
+    initGoogleAnalytics();
+};
 
 //refactor
 //pull data as needed perhaps on first call of page?
 function App() {
+    useEffect(() => {
+        initGoogleAnalyticsIfCookie();
+    }, []);
+
     const location = useLocation();
 
     const [homeProps, setHomeProps] = useState({});
@@ -62,6 +74,7 @@ function App() {
         date.setDate(date.getDate()+365);
         setCookie("openreferralukorg","", { path: '/', expires: date} );
         setShowBanner(false);
+        initGoogleAnalytics();
     }
   
     const handleReject = () => {
