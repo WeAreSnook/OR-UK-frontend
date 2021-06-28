@@ -818,6 +818,8 @@ footer {
 }
 
 .card-link-container {
+    padding-bottom: 1rem;
+    
     li {
         @include cardbox-dark;
         margin-top: $padSmall;

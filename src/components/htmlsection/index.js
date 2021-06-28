@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import InjectHtml from '../home/InjectHtml';
 
 const covertHeadingToCssClassName = heading => {
@@ -21,6 +20,7 @@ const HtmlSection = ({ sections }) => {
             <InjectHtml itemKey={`${index}body`} paragraphText={item.sectionBody} />
         </div>
     });
-}
+};
+
 export default HtmlSection;
 
