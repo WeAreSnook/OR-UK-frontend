@@ -58,14 +58,18 @@ function App() {
     const [showBanner, setShowBanner] = useState(true);
   
     const handleAccept = () => {
-        setCookie("openreferralukorg","", { path: '/'} );
+        var date = new Date();
+        date.setDate(date.getDate()+365);
+        setCookie("openreferralukorg","", { path: '/', expires: date} );
         setShowBanner(false);
     }
   
     const handleReject = () => {
-      setCookie("hidecookienotify","", { path: '/'} );
-      setShowBanner(false);
-  }
+        var date = new Date();
+        date.setDate(date.getDate()+365);
+        setCookie("hidecookienotify","", { path: '/', expires: date} );
+        setShowBanner(false);
+    }
   
     useEffect(() => {
         if (cookies && (cookies.hasOwnProperty("openreferralukorg") || cookies.hasOwnProperty("hidecookienotify"))) {
