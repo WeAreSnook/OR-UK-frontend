@@ -1229,3 +1229,64 @@ button {
         }
     }
 }
+
+
+.case-study {
+    figure.image {
+        img {
+            width: 100%;
+            border: solid 3px $color-brand;
+            border-radius: 0.3rem;
+        }
+    }
+
+    .cookiemessage {
+        padding: 1em;
+    }
+}
+
+.case-study {
+    figure.image {
+        img {
+            width: 100%;
+            border: solid 3px $color-brand;
+            border-radius: 0.3rem;
+        }
+    }
+
+    .benefits, .boxed,
+    .further-information, .further-information-about-this-work, .dark-boxed {
+        background-color: $color-brand-lighter;
+        padding: 2rem;
+        border-radius: 0.5rem;
+
+        margin-top: 2rem;
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+
+    .further-information, .further-information-about-this-work, .dark-boxed {
+        background-color: $color-brand-darker;
+        color: white;
+
+        a {
+            color: white;
+        }
+    }
+
+    .case-study-heading {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .case-study-related {        
+        @include cardbox-dark;
+        padding: 2rem;
+
+        h3 {
+            margin-top: 0;
+        }
+    }
+}
