@@ -13,6 +13,15 @@ const PageTitle = ({ title }) => {
             window.ga('send', 'pageview', { page: location.pathname, title: document.title });
         }
 
+        if (!!window.dataLayer) {
+            const dataLayer = window.dataLayer;
+            dataLayer.push({ 
+                event: 'page-changed',
+                url: location.pathname,
+                page_title: document.title
+            });
+        }
+
         return () => {
             document.title = mainTitle;
             //window.ga('send', 'pageview', { page: location.pathname, title: document.title });
