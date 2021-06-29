@@ -15,6 +15,7 @@ import GenericLandingPage from "./components/genericlandingpage/GenericLandingPa
 import WhoIsUsing from "./components/whoisusing";
 import GenericContentPage from './components/genericcontentpage/GenericContentPage';
 import CaseStudyPage from './components/genericcontentpage/CaseStudyPage';
+import RegisterPage from './components/genericcontentpage/RegisterPage';
 import LandingPage from './components/casestudies/LandingPage';
 import SkipToContent from './components/header/SkipToContent';
 import Dashboard from './components/dashboard/dashboard';
@@ -113,6 +114,7 @@ function App() {
         { path: "/open-referral-uk-video-transcript", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
         { path: "/dashboard", render: () => <Dashboard /> },
         { path: "/devdashboard", render: () => <Dashboard overrideData={mockData} /> },
+        { path: "/register", render: ({ location }) => <RegisterPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
         { path: "/preview", render: () => <Preview /> },
         { path: "/404", component: NotFound }
     ];

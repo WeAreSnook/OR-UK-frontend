@@ -1,10 +1,10 @@
-import HtmlSection from '../htmlsection';
+import HtmlSections from '../htmlsection';
 import SideMenu from '../sidemenu';
 import PageTitle from './PageTitle';
 import BackButton from './BackButton';
 import ReadNextLink from './ReadNextLink';
 
-const GenericContent = ({ description, showDescription = false, article, articleClassName, parent, RelatedLink = ReadNextLink }) => {
+const GenericContent = ({ description, showDescription = false, article, articleClassName, parent, Sections = HtmlSections, RelatedLink = ReadNextLink }) => {
 
     if (!article)
         return null;
@@ -22,7 +22,7 @@ const GenericContent = ({ description, showDescription = false, article, article
                 <h1>{title}</h1>
                 {showDescription && !!description && <p><small>{description}</small></p>}
                 <div className="body">
-                    <HtmlSection sections={sections} />
+                    <Sections sections={sections} />
                 </div>
                 {!!link && <hr />}
                 <RelatedLink link={link} />
