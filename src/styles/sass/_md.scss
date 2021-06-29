@@ -703,3 +703,18 @@ table.feeds {
         padding: 1em;
     }
 }
+
+.form-section {
+    .input-with-button {       
+        flex-direction: row;
+
+        input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+    }
+
+    .check-list {
+        flex-direction: row;
+    }
+}

@@ -292,8 +292,9 @@ li {
 .button-back {
     display: inline-block;
     margin-bottom: 2rem;
+
     &::before {
-        content: "\27F5";
+        content: "\2190";
         display: inline-block;
         padding-right: 1rem;
     }
@@ -1306,6 +1307,11 @@ button {
     label {
         display: block;
         font-size: 1.25rem;
+
+        small {
+            display: block;
+            color: $color-text-muted;
+        }
     }
 
     input[type=text] {
@@ -1318,6 +1324,7 @@ button {
         font-family: Arial, Helvetica, sans-serif;
         font-feature-settings: normal;
         font-size: 1.2rem;
+        width: 100%;
         
         &:focus-visible {
             outline: none !important;
@@ -1326,11 +1333,78 @@ button {
 
     .input-with-button {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: stretch;
 
         input {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .form-item {
+        margin-top: 1rem;
+    }
+
+    .check-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .check-item {
             flex: 1;
+            
+            input[type=checkbox], input[type=radio] {
+                margin: 0;
+                padding-right: 1rem;
+
+                position: relative;
+            }
+
+            input[type=radio] {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            input[type=radio]+label {
+                display: inline-block;
+                position: relative;
+
+                &::before {
+                    content: ' ';
+                    position: relative;
+                    top: 0.25rem;
+                    margin-right: 0.25rem;
+                    text-align: center;
+                    display: inline-block;
+                    width: 1rem;
+                    height: 1rem;
+                    border: solid 3px $color-blue-darker;
+                    border-radius: 50%;
+                }
+            }
+
+            input[type=radio]:checked+label {
+                &::before {
+                    background-color: $color-blue-darker;
+                }
+            }
+        }
+    }
+}
+
+.register-page {
+    ul {
+        list-style-type: none;
+        
+        li {
+            position: relative;
+            
+            &::before {
+                content: '\2192';
+                position: absolute;
+                left: -2rem;
+            }
         }
     }
 }
