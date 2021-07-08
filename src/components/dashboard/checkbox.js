@@ -20,7 +20,7 @@ export const IsServiceExampleValidCheckbox = ({ item }) =>
 const cleanTestName = (name = '') => name.replace(/ Test/gi, '').replace(/ Search/gi, '');
 
 export const IsSearchEnabled = ({ item }) => {
-    const { searchResults = [] } = item;
+    const searchResults = item.searchResults || [];
     searchResults.sort((a, b) => cleanTestName(a.testName).localeCompare(cleanTestName(b.testName)));
 
     const message = <ul>

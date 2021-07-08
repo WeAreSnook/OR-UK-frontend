@@ -1,5 +1,130 @@
 const mockData = [
     {
+        "url": "https://blackburn.openplace.directory/o/ServiceDirectoryService/v2",
+        "label": "Blackburn with Darwen Council",
+        "summary": "Live Blackburn with Darwen Council services data",
+        "organisationLabel": "Blackburn with Darwen Council",
+        "organisationUrl": "http://www.blackburn.gov.uk",
+        "developerLabel": "Placecube",
+        "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
+        "servicePathOverride": "",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
+        "checkIsRunning": false,
+        "timeTaken": 23431,
+        "isUp": true,
+        "isServicesValid": true,
+        "servicesMessage": "",
+        "isServiceExampleValid": true,
+        "serviceExampleIdentifier": "0ea8d151-ff33-76ae-c6b5-d78826ad5c62",
+        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB",
+        "isSearchEnabled": true,
+        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
+        "searchResults": [
+            {
+                "testName": "Text Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Age Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Postcode Search",
+                "success": false,
+                "errorMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB"
+            },
+            {
+                "testName": "Taxonomy Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Time Search Test",
+                "success": true,
+                "errorMessage": null
+            }
+        ],
+        "filters": [
+            "ChildChildTaxonomyTerm",
+            "ChildTaxonomyTerm",
+            "Coverage",
+            "Day",
+            "EndTime",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "StartTime",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
+        "isCompleteSuccess": true
+    },
+    {
+        "url": "https://bristol.openplace.directory/o/ServiceDirectoryService/v2",
+        "label": "Bristol Council",
+        "summary": "Services for Brisol and South Gloucestershire service finders",
+        "organisationLabel": "Bristol Council",
+        "organisationUrl": "https://www.bristol.gov.uk",
+        "developerLabel": "Placecube",
+        "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
+        "servicePathOverride": "",
+        "schemaType": "Placecube",
+        "lastCheck": "2021-07-07T18:00:03",
+        "checkIsRunning": false,
+        "timeTaken": 61794,
+        "isUp": true,
+        "isServicesValid": true,
+        "servicesMessage": "",
+        "isServiceExampleValid": true,
+        "serviceExampleIdentifier": "0feec8cb-63a8-064b-1568-5967e8e8b192",
+        "serviceExampleMessage": "",
+        "isSearchEnabled": true,
+        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Postcode Search\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
+        "searchResults": [
+            {
+                "testName": "Text Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Age Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Postcode Search",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Taxonomy Test",
+                "success": true,
+                "errorMessage": null
+            },
+            {
+                "testName": "Time Search Test",
+                "success": true,
+                "errorMessage": null
+            }
+        ],
+        "filters": [
+            "Coverage",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
+        "isCompleteSuccess": true
+    },
+    {
         "url": "https://api.familyinfo.buckinghamshire.gov.uk/api/v1",
         "label": "Buckinghamshire Council",
         "summary": "Buckinghamshire Family Information Service",
@@ -8,22 +133,23 @@ const mockData = [
         "developerLabel": "FutureGov",
         "developerUrl": "https://wearefuturegov.com/",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T12:16:14",
-        "checkIsRunning": true,
-        "timeTaken": 1991986,
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
+        "checkIsRunning": false,
+        "timeTaken": 20571631,
         "isUp": true,
         "isServicesValid": false,
         "servicesMessage": "Missing search method paginaton metadata at the begining of the JSON payload. Required: \"number\"; \"first\"; \"last\". It is case sensitive, and should be in the following format: {\"totalElements\":nn,\"totalPages\":nn,\"number\":nn,\"size\":nn,\"first\":bb,\"last\":bb\",\"content\":[{},{}]...",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "2259",
-        "serviceExampleMessage": "",
-        "isSearchEnabled": true,
-        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Could not run Postcode Search test due to lack of data.\"},{\"TestName\":\"Taxonomy Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Taxonomy Test test due to lack of data.\"},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
+        "serviceExampleIdentifier": "1214",
+        "serviceExampleMessage": "Text Test failed. When tested using /services?text=Perform%3a+Drama%2c+Dance+and+Singing+(Beaconsfield)\nTime Search Test failed. When tested using /services?start_time=15%3a15&end_time=18%3a00",
+        "isSearchEnabled": false,
+        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":false,\"ErrorMessage\":\"Text Test failed. When tested using /services?text=Perform%3a+Drama%2c+Dance+and+Singing+(Beaconsfield)\"},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Could not run Postcode Search test due to lack of data.\"},{\"TestName\":\"Taxonomy Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Taxonomy Test test due to lack of data.\"},{\"TestName\":\"Time Search Test\",\"Success\":false,\"ErrorMessage\":\"Time Search Test failed. When tested using /services?start_time=15%3a15&end_time=18%3a00\"}]",
         "searchResults": [
             {
                 "testName": "Text Test",
-                "success": true,
-                "errorMessage": null
+                "success": false,
+                "errorMessage": "Text Test failed. When tested using /services?text=Perform%3a+Drama%2c+Dance+and+Singing+(Beaconsfield)"
             },
             {
                 "testName": "Age Test",
@@ -42,9 +168,19 @@ const mockData = [
             },
             {
                 "testName": "Time Search Test",
-                "success": true,
-                "errorMessage": null
+                "success": false,
+                "errorMessage": "Time Search Test failed. When tested using /services?start_time=15%3a15&end_time=18%3a00"
             }
+        ],
+        "filters": [
+            "Coverage",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
         ],
         "isCompleteSuccess": false
     },
@@ -57,14 +193,15 @@ const mockData = [
         "developerLabel": "CQC/ORUK",
         "developerUrl": "https://github.com/OpenReferralUK/human-services/tree/master/Utilities/CQCImport",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:53:55",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
         "checkIsRunning": false,
-        "timeTaken": 182253,
+        "timeTaken": 114108,
         "isUp": true,
         "isServicesValid": true,
         "servicesMessage": "",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "80043e73-8a4f-4680-95c8-68950041fc9a",
+        "serviceExampleIdentifier": "5e897998-6195-48f4-b90b-ecf2ea82536f",
         "serviceExampleMessage": "",
         "isSearchEnabled": true,
         "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Time Search Test test due to lack of data.\"}]",
@@ -95,103 +232,20 @@ const mockData = [
                 "errorMessage": "Could not run Time Search Test test due to lack of data."
             }
         ],
-        "isCompleteSuccess": true
-    },
-    {
-        "url": "https://blackburn.openplace.directory/o/ServiceDirectoryService/v2",
-        "label": "Blackburn with Darwen Council",
-        "summary": "Live Blackburn with Darwen Council services data",
-        "organisationLabel": "Blackburn with Darwen Council",
-        "organisationUrl": "http://www.blackburn.gov.uk",
-        "developerLabel": "Placecube",
-        "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
-        "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:33:10",
-        "checkIsRunning": false,
-        "timeTaken": 13038,
-        "isUp": true,
-        "isServicesValid": true,
-        "servicesMessage": "",
-        "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "956403da-fd2b-a46d-cb6a-c17f5f6b78d0",
-        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB",
-        "isSearchEnabled": true,
-        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
-        "searchResults": [
-            {
-                "testName": "Text Test",
-                "success": true,
-                "errorMessage": null
-            },
-            {
-                "testName": "Age Test",
-                "success": false,
-                "errorMessage": "Could not run Age Test test due to lack of data."
-            },
-            {
-                "testName": "Postcode Search",
-                "success": false,
-                "errorMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=WA4+4AB"
-            },
-            {
-                "testName": "Taxonomy Test",
-                "success": true,
-                "errorMessage": null
-            },
-            {
-                "testName": "Time Search Test",
-                "success": true,
-                "errorMessage": null
-            }
-        ],
-        "isCompleteSuccess": true
-    },
-    {
-        "url": "https://bristol.openplace.directory/o/ServiceDirectoryService/v2",
-        "label": "Bristol Council",
-        "summary": "Services for Brisol and South Gloucestershire service finders",
-        "organisationLabel": "Bristol Council",
-        "organisationUrl": "https://www.bristol.gov.uk",
-        "developerLabel": "Placecube",
-        "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
-        "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:51:26",
-        "checkIsRunning": false,
-        "timeTaken": 36473,
-        "isUp": true,
-        "isServicesValid": true,
-        "servicesMessage": "",
-        "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "e82030f9-d142-4352-8471-f7bb3b12f274",
-        "serviceExampleMessage": "",
-        "isSearchEnabled": true,
-        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
-        "searchResults": [
-            {
-                "testName": "Text Test",
-                "success": true,
-                "errorMessage": null
-            },
-            {
-                "testName": "Age Test",
-                "success": false,
-                "errorMessage": "Could not run Age Test test due to lack of data."
-            },
-            {
-                "testName": "Postcode Search",
-                "success": true,
-                "errorMessage": null
-            },
-            {
-                "testName": "Taxonomy Test",
-                "success": true,
-                "errorMessage": null
-            },
-            {
-                "testName": "Time Search Test",
-                "success": true,
-                "errorMessage": null
-            }
+        "filters": [
+            "ChildChildTaxonomyTerm",
+            "ChildTaxonomyTerm",
+            "Coverage",
+            "Day",
+            "EndTime",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "StartTime",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
         ],
         "isCompleteSuccess": true
     },
@@ -204,14 +258,15 @@ const mockData = [
         "developerLabel": "Placecube",
         "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:33:37",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
         "checkIsRunning": false,
-        "timeTaken": 8459,
+        "timeTaken": 8380,
         "isUp": true,
         "isServicesValid": true,
         "servicesMessage": "",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "e9a85dc6-d528-4ee0-a167-3944f7818c47",
+        "serviceExampleIdentifier": "63a74185-825a-45db-9ed1-251354067caa",
         "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=KT8+9LU",
         "isSearchEnabled": true,
         "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=KT8+9LU\"},{\"TestName\":\"Taxonomy Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Taxonomy Test test due to lack of data.\"},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
@@ -242,6 +297,16 @@ const mockData = [
                 "errorMessage": null
             }
         ],
+        "filters": [
+            "Coverage",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
         "isCompleteSuccess": true
     },
     {
@@ -253,17 +318,18 @@ const mockData = [
         "developerLabel": "Placecube",
         "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:26:12",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
         "checkIsRunning": false,
-        "timeTaken": 4769,
+        "timeTaken": 2572,
         "isUp": true,
         "isServicesValid": true,
         "servicesMessage": "",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "e8e88ff0-d7f4-b79e-8e73-fd7358dafe92",
-        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=PR5+6AW",
+        "serviceExampleIdentifier": "27881ca0-a509-43fc-5074-58c368ef1d1e",
+        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=PR5+6AW\nAge Test failed. When tested using /services?minimum_age=0&maximum_age=0",
         "isSearchEnabled": true,
-        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=PR5+6AW\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
+        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Age Test failed. When tested using /services?minimum_age=0&maximum_age=0\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=PR5+6AW\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
         "searchResults": [
             {
                 "testName": "Text Test",
@@ -273,7 +339,7 @@ const mockData = [
             {
                 "testName": "Age Test",
                 "success": false,
-                "errorMessage": "Could not run Age Test test due to lack of data."
+                "errorMessage": "Age Test failed. When tested using /services?minimum_age=0&maximum_age=0"
             },
             {
                 "testName": "Postcode Search",
@@ -291,6 +357,21 @@ const mockData = [
                 "errorMessage": null
             }
         ],
+        "filters": [
+            "ChildChildTaxonomyTerm",
+            "ChildTaxonomyTerm",
+            "Coverage",
+            "Day",
+            "EndTime",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "StartTime",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
         "isCompleteSuccess": true
     },
     {
@@ -302,14 +383,15 @@ const mockData = [
         "developerLabel": "Public Partnerships",
         "developerUrl": "https://www.publicconsultinggroup.co.uk/",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:26:34",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
         "checkIsRunning": false,
-        "timeTaken": 7652,
+        "timeTaken": 7782,
         "isUp": true,
         "isServicesValid": false,
         "servicesMessage": "Missing search method paginaton metadata at the begining of the JSON payload. Required: \"totalElements\"; \"totalPages\". It is case sensitive, and should be in the following format: {\"totalElements\":nn,\"totalPages\":nn,\"number\":nn,\"size\":nn,\"first\":bb,\"last\":bb\",\"content\":[{},{}]...",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "789021b2-e773-47cf-a8cb-ab5200fedea3",
+        "serviceExampleIdentifier": "968be944-c633-4023-9750-ab5200feda57",
         "serviceExampleMessage": "Text Test failed. When tested using /services?text=LGA+Test+Entry",
         "isSearchEnabled": true,
         "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":false,\"ErrorMessage\":\"Text Test failed. When tested using /services?text=LGA+Test+Entry\"},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
@@ -340,6 +422,16 @@ const mockData = [
                 "errorMessage": null
             }
         ],
+        "filters": [
+            "ChildTaxonomyTerm",
+            "Coverage",
+            "Day",
+            "Keywords",
+            "Proximity",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
         "isCompleteSuccess": false
     },
     {
@@ -351,17 +443,18 @@ const mockData = [
         "developerLabel": "Placecube",
         "developerUrl": "https://www.placecube.com/platforms/open-place-directory/",
         "servicePathOverride": "",
-        "lastCheck": "2021-06-14T11:22:32",
+        "schemaType": null,
+        "lastCheck": "2021-07-07T18:00:03",
         "checkIsRunning": false,
-        "timeTaken": 1004,
+        "timeTaken": 1629,
         "isUp": true,
         "isServicesValid": true,
         "servicesMessage": "",
         "isServiceExampleValid": true,
-        "serviceExampleIdentifier": "f3b5c4ff-1654-229b-1af9-f9ac88ccc722",
-        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=DN20+8LD",
+        "serviceExampleIdentifier": "b30cf10e-7d39-f414-addc-6bd05c4e7f84",
+        "serviceExampleMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=DN15+6HS\nAge Test failed. When tested using /services?minimum_age=0&maximum_age=0",
         "isSearchEnabled": true,
-        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Could not run Age Test test due to lack of data.\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=DN20+8LD\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
+        "searchEnabledMessage": "[{\"TestName\":\"Text Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Age Test\",\"Success\":false,\"ErrorMessage\":\"Age Test failed. When tested using /services?minimum_age=0&maximum_age=0\"},{\"TestName\":\"Postcode Search\",\"Success\":false,\"ErrorMessage\":\"Postcode Search failed. When tested using /services?proximity=100&postcode=DN15+6HS\"},{\"TestName\":\"Taxonomy Test\",\"Success\":true,\"ErrorMessage\":null},{\"TestName\":\"Time Search Test\",\"Success\":true,\"ErrorMessage\":null}]",
         "searchResults": [
             {
                 "testName": "Text Test",
@@ -371,12 +464,12 @@ const mockData = [
             {
                 "testName": "Age Test",
                 "success": false,
-                "errorMessage": "Could not run Age Test test due to lack of data."
+                "errorMessage": "Age Test failed. When tested using /services?minimum_age=0&maximum_age=0"
             },
             {
                 "testName": "Postcode Search",
                 "success": false,
-                "errorMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=DN20+8LD"
+                "errorMessage": "Postcode Search failed. When tested using /services?proximity=100&postcode=DN15+6HS"
             },
             {
                 "testName": "Taxonomy Test",
@@ -389,7 +482,47 @@ const mockData = [
                 "errorMessage": null
             }
         ],
+        "filters": [
+            "ChildChildTaxonomyTerm",
+            "ChildTaxonomyTerm",
+            "Coverage",
+            "Day",
+            "EndTime",
+            "Keywords",
+            "maxAge",
+            "minAge",
+            "Proximity",
+            "StartTime",
+            "TaxonomyTerm",
+            "TaxonomyType",
+            "Vocabulary"
+        ],
         "isCompleteSuccess": true
+    },
+    {
+        "url": "https://api.porism.com/ServiceDirectoryServiceOpenActiveAggregated",
+        "label": "OpenActive",
+        "summary": "Open source transformation run daily from OpenActive sports and wellbeing activities feeds aggregated by Imin - https://www.imin.co into an instance of the open source directory.",
+        "organisationLabel": "OpenActive",
+        "organisationUrl": "https://www.openactive.io/",
+        "developerLabel": "Imin / ORUK",
+        "developerUrl": "https://github.com/OpenReferralUK/human-services/tree/master/Utilities/OpenActiveFireHose",
+        "servicePathOverride": "",
+        "schemaType": null,
+        "lastCheck": "2010-01-01T00:00:00",
+        "checkIsRunning": false,
+        "timeTaken": -1,
+        "isUp": false,
+        "isServicesValid": false,
+        "servicesMessage": "",
+        "isServiceExampleValid": false,
+        "serviceExampleIdentifier": "",
+        "serviceExampleMessage": "",
+        "isSearchEnabled": false,
+        "searchEnabledMessage": "",
+        "searchResults": null,
+        "filters": [],
+        "isCompleteSuccess": false
     }
 ];
 

@@ -11,6 +11,9 @@ const LastChecked = ({ item }) => {
     if (checkIsRunning || !lastCheck)
         return <span title={`Started check at ${date} (${diff}).`}>Checking...</span>;
 
+    if (utcLastCheck < new Date(2019, 0, 1))
+        return <span>Not run yet</span>;
+
     return <span title={`${date} (took: ${time})`}>{diff}</span>;
 };
 
