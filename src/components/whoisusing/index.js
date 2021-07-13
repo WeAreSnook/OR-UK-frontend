@@ -6,9 +6,10 @@ import useOukapi from '../../helpers/dataFetch';
 import CardList from './Cards/CardList';
 import Title from '../shared/title';
 import LinkWithTitleSection from "./LinkWithTitleSection";
+import Footer from '../footer/Footer';
 
-//build a picture
-const WhoIsUsing = () => {
+//check objects not undefined
+const WhoIsUsing = ({ footerProps }) => {
 
     //use styles prop
 
@@ -31,25 +32,23 @@ const WhoIsUsing = () => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const REACT_APP_WHO_IS_USING_PAGE = process.env.REACT_APP_WHO_IS_USING_PAGE;
 
-    const [{ data, isError }, isFetching] = useOukapi(`${BASE_URL}${REACT_APP_WHO_IS_USING_PAGE}`);
+    const [{ data, isError , isFetching}] = useOukapi(`${BASE_URL}${REACT_APP_WHO_IS_USING_PAGE}`);
+    
     const {
-        pageTitle, 
-        numbers, 
-        id, 
-        orgSections, 
-        caseStudiesLink, 
-        underNumbersText, 
+        pageTitle,
+        numbers,
+        orgSections,
+        caseStudiesLink,
+        underNumbersText,
         registerLink,
         registerLinkWithTitle
-     } = data
+    } = data
 
-    //need id make sure all keys set
-    console.log(id);
-
-    if (isFetching || isError) return null;
+    if (isFetching) return <p>Loading.....</p>
 
     return (
-        <main id="content" className="main-container">
+        <>
+         { !isError && orgSections ? (<main id="content" className="main-container">
             <div className="page-container flex-container">
                 <SideMenu subMenu={getObjects(orgSections)} />
                 <article className="flex-right">
@@ -62,28 +61,31 @@ const WhoIsUsing = () => {
                         {registerLink.TextToDisplay}
                     </a>
 
-                    <Link to={caseStudiesLink.url} >{caseStudiesLink.TextToDisplay}</Link>
-
-
+                    <p>
+                        <Link to={caseStudiesLink.url} >{caseStudiesLink.TextToDisplay}</Link>
+                    </p>
 
                     {orgSections && getGroups(orgSections).map((organisation, index) => {
                         return <Fragment key={`${organisation.id}grouptitle}`}>
                             <Title title={organisation.title} id={`section-${index + 1}-heading`} />
-                            <div id={`${organisation.id}_title`} className="cardgrid">
+                            <ul id={`${organisation.id}_title`} className="cardgrid">
                                 <CardList key={organisation.id} organisationList={organisation.Organisation} type="org" />
-                            </div>
+                            </ul>
                         </Fragment>
 
                     })
                     }
 
-                    <LinkWithTitleSection {...registerLinkWithTitle}/>
+                    <LinkWithTitleSection {...registerLinkWithTitle} />
 
                 </article>
 
             </div>
 
-        </main>
+            </main>) : null  }
+        
+        {  footerProps && <Footer footerProps={footerProps} styleName="footer" /> }
+        </>
     )
 
 }

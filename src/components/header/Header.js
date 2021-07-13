@@ -21,7 +21,7 @@ const Header = ({ mainMenu, topMenuId }) => {
   return (
     <header className="global-header" role="banner">
       <div className="global-header__top-container page-container">
-        <Link to="/" className="global-header__logo"><img src={logo} alt="Open Referral UK"/></Link>
+        <Link to="/" className="global-header__logo link-with-image"><img src={logo} alt="Open Referral UK"/></Link>
         <button onClick={toggleClass} 
                 className={isActive ? 'button button-secondary button-header hide-md active': "button button-secondary button-header hide-md"}
                 aria-label={isActive ? 'menu open' : 'menu closed'}
@@ -33,12 +33,9 @@ const Header = ({ mainMenu, topMenuId }) => {
           </svg>
           {isActive ? 'Close': "Menu"}
         </button>
-        {/* <a href="/developers" className="button button-secondary button-header show-md">
-          For developers
-        </a> */}
         <LinkExternal link={link} rel="noreferrer" styleName="button button-secondary button-header show-md" />
       </div>
-      <Navigator onClick={toggleClass} mainMenu={mainMenu} topMenuId={topMenuId.toString()} menuButton={isActive} />
+      <Navigator onClick={toggleClass} mainMenu={mainMenu} topMenuId={topMenuId.toString()} menuButton={isActive} developersLink={link}/>
     </header>
   );
 }

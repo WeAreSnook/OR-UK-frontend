@@ -6,4 +6,7 @@ import '@testing-library/jest-dom';
 import { configure } from 'enzyme';
 import 'jest-enzyme';
 import Adapter from 'enzyme-adapter-react-17-updated';
+
+global.fetch = require('jest-fetch-mock');
+
 configure( { adapter: new Adapter() });

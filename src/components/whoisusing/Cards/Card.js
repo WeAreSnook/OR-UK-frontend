@@ -1,8 +1,7 @@
 import React from 'react';
 import CompanyLogo from '../../artefacts/logo';
 
-import LinksList from '../../links/LinksList';
-import Title from '../../shared/title/';
+import LinkListItem from '../../links/LinkListItem';
 //use generic
 
 const Card = ({organisation, styleName}) => {
@@ -13,24 +12,24 @@ const Card = ({organisation, styleName}) => {
     let logo = <></>;
 
     if (organisationLogo && organisationLogo.CompanyLogo && organisationLogo.link){
-        logo = <a href={organisationLogo.link}><CompanyLogo logo={organisationLogo.CompanyLogo}/></a>
+        logo = <a href={organisationLogo.link} className="card__img-container link-with-image"><CompanyLogo logo={organisationLogo.CompanyLogo}/></a>
     }else{
         logo = <CompanyLogo logo={organisationLogo.CompanyLogo}/>
     }
 
     return (
-        <div key={id} className={styleName}>
+        <li key={id} className={styleName}>
             {logo}
-        <Title title={orgTitle}/>
-        <ul className="listnostyle">
+            <h3>{orgTitle}</h3>
+            <ul className="listnostyle card__sub-list">
 
-        { orgLinks && Object.keys(orgLinks).length > 0 && orgLinks.map(orgLink => {
-            orgLink.external = true;
-            return <LinksList key={`${id}${orgLink.id}`} styleName="listnostyle"  list={orgLink}/>
-        }) 
-        }
-        </ul>
-          </div>
+            { orgLinks && Object.keys(orgLinks).length > 0 && orgLinks.map(orgLink => {
+                orgLink.external = true;
+                return <LinkListItem key={`${id}${orgLink.id}`} link={orgLink}/>
+            }) 
+            }
+            </ul>
+          </li>
     );
 };
 

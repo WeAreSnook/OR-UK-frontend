@@ -9,32 +9,30 @@ const SUB_MENU_URI = '/sub-menus/';
 //const MENU_URI = process.env.;
 
 
-export const fetchLandingPageContent = () => {
+export const fetchLandingPageContent = async() => {
   //consider using nlogge
   
-  return fetch(BASE_URL + LANDING_PAGE_URI)
-    .then(async res => { 
+  const res = await fetch(BASE_URL + LANDING_PAGE_URI)
+   
       if (res.status === 200) {
         console.log("response from fetch home ", res.status);
         return await res.json();
       } else {
         console.log("response status ", res.status)
-      }
-    }).catch(err => { console.log(err); });
+        //throw
+      } 
 }
 
-export const fetchMainMenuItems = () => {
-  return fetch(BASE_URL + MENU_URI)
-    .then(async res => {
+export const fetchMainMenuItems = async() => {
+ const res = await fetch(BASE_URL + MENU_URI)
+    //.then(async res => {
 
       if (res.status === 200) {
-        
         return await res.json();
       } else {
         console.log("response from fetch menu ", res.status);
       }
-      
-    } )
+   // } )
 }
 
 export const fetchSubMenuItems = subMenuId => {
