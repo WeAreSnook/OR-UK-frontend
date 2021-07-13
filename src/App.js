@@ -5,8 +5,6 @@ import Footer from './components/footer/Footer';
 import NotFound from './components/errorpage/'
 import GenericErrorPage from './components/shared/errorpage/errorpagegeneric';
 import '../src/styles/sass/styles.scss';
-import { fetchLandingPageContent, 
-         fetchMainMenuItems } from './helpers/ContentConsumer';
 import useOukapi from './helpers/dataFetch';
 import HomePage from "./components/home";
 import GenericLandingPage from "./components/genericlandingpage/GenericLandingPage";
@@ -15,47 +13,63 @@ import GenericContentPage from './components/genericcontentpage/GenericContentPa
 import CaseStudiesLandingPage from './components/casestudies/LandingPage';
 import SkipToContent from './components/header/SkipToContent';
 
-//refactor
-//pull data as needed perhaps on first call of page?
 function App() {
   const location = useLocation();
 
   const [homeProps, setHomeProps] = useState({});
-  const [topMenuId, setTopMenuId] = useState('');
+  const [topMenuId] = useState('');
   const [mainMenu, setMainMenu] = useState([]);
-  const [errors] = useState({});  //use to confirm render component or error page
+  const [footerProps, setFooterProps] = useState({});
 
-  const BASE_URL  = process.env.REACT_APP_BASE_URL;
+  const [errors, setErrors] = useState(false);  //use to confirm render component or error page
+
+  const BASE_URL  = 'https://admin.beta.openreferraluk.org';
   const ABOUT_PAGE = process.env.REACT_APP_ABOUT_PAGE_URI;
   const CONTACT_PAGE = process.env.REACT_APP_CONTACT_PAGE;
-  const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER
-  console.log(errors);  //take care of on refactor
+  const REACT_APP_FOOTER = process.env.REACT_APP_FOOTER;
+  const REACT_APP_HOME_PAGE_URI = process.env.REACT_APP_HOME_PAGE_URI;
+  const MENU_URI = '/top-menus';
 
-  let [{data, isFetching, isError}] = useOukapi(`${BASE_URL}${REACT_APP_FOOTER}`)
-  const footerProps = data;
+  let [{data, isFetching, isError}] = useOukapi([{key: "menuContent", url: `${BASE_URL}${MENU_URI}`},{key:"footerContent", url: `${BASE_URL}${REACT_APP_FOOTER}`},{key: "homeContent", url: `${BASE_URL}${REACT_APP_HOME_PAGE_URI}`}]);
+ 
+  useEffect(() => {
+    let current;
+    
+    if (isError) {
+      //enhance with retries
+      setErrors(true);
+      return;
+    }
+
+    if (!isFetching && !data.length) {
+    
+      setErrors(true);
+      return
+    };
+
+      if(!isFetching && data.length>0) {
+       current = data.filter(indexValue => {
+          return indexValue.url.key === "homeContent";
+        });
+        setHomeProps(current[0].data);
+      
+        current = [];
+        current = data.filter(indexValue => {
+          return indexValue.url.key === "menuContent";
+        });  
+        //check if value -write failing test
+        setMainMenu(current[0].data)
+
+        current = [];
+        current = data.filter(indexValue => {
+          return indexValue.url.key === "footerContent";
+        }); 
+        setFooterProps(current[0].data);
+      } 
+    
+  }, [setHomeProps, setMainMenu, data, isError, isFetching]);    
 
   useEffect(() => {
-    // fetch from strapi
-    fetchLandingPageContent()
-      .then((data) => {
-        // set data from strapi to state vars
-        console.log("homeprops", data)
-        setHomeProps((data));
-       // setBodyText(data.projectOverview);
-        if (data.top_menu) {
-          setTopMenuId(data.top_menu.id);
-        }
-       
-      }).catch(err => console.log("do something with error as required"));
-
-    fetchMainMenuItems()
-      .then((data) => { 
-        setMainMenu(data)
-      });
-  }, []);    
-
-  useEffect(() => {
-    console.log(location.hash);
     if (location.hash === '') {
       return;
     }
@@ -68,9 +82,16 @@ function App() {
     }, 1000);
   }, [location]);
 
-  //now can use iserror instead of object keys
+  if (isError) { setErrors(true); }
+
+
+  if (errors) {
+    throw new Error('Data load failure');
+  }
+
   return (
-     !isFetching && !isError  && Object.keys(homeProps).length > 0 &&
+   
+    !isFetching  && !isError  && Object.keys(homeProps).length > 0 ?
     
     (<>
       
@@ -100,7 +121,7 @@ function App() {
       <Footer footerProps={footerProps} styleName="footer" />
     
     
-    </>)
+    </>) : <div>Loading...</div>
     
   );
 }

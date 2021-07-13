@@ -4,37 +4,35 @@ import { useEffect, useState } from "react";
 //build in caching
 const useOukapi = (urlParam) => {
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const [isError, setIsError] = useState(false);
     const [isFetching, setIsFetching] = useState(true);
-    const [url, setUrl] = useState(urlParam);
+    const [urlList, setUrl] = useState(urlParam);
+
 
     useEffect(() => {
         const fetchContent = async() => {
             setIsError(false);
-        
-            console.log(urlParam)
-            //value not set checks call error page
 
         try {
-            const response = await fetch(url);
-            if (response.status === 200 ) {
-                setData(await response.json())
-                setIsFetching(false)
-
-            }
-            
+            const result = Promise.all(urlList.map(url => fetch(url.url)
+            .then(response => response.json())
+            .then(data => ({ data, url }))
+            .catch(error => { throw new Error("Process error") /* log { error, url}*/; } )
+            ));
+            setData(await result);
+            setIsFetching(false);
         } catch(error) {
-            console.log("any errors? ", error);
+            //log-level("any errors? ", error);
             setIsError(true);
             setIsFetching(false);
         }
     }
         fetchContent();
 
-    }, [url, urlParam]);
-    console.log("any data? ", data)
-    return[{data, isError}, isFetching, setUrl]
+    }, [urlList]);
+    
+    return[{data, isError, isFetching},  setUrl]
     };
 
     export default useOukapi; 

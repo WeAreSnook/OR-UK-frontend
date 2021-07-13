@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import CaseStudyOverview from './CaseStudyOverview';
 import InjectHtml from "../home/InjectHtml";
 import useOukapi from '../../helpers/dataFetch';
+import Footer from '../footer/Footer';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const CASE_STUDIES_LANDING_PAGE = process.env.REACT_APP_CASE_STUDIES_LANDING_PAGE;
 const CASE_STUDIES = process.env.REACT_APP_CASE_STUDIES;
 
-const CaseStudiesLandingPage = () => {
+const CaseStudiesLandingPage = ({footerProps}) => {
   const [title, setTitle] = useState("");
   const [introParagraph, setIntroParagraph] = useState("");
 
@@ -28,6 +30,7 @@ const CaseStudiesLandingPage = () => {
   });
 
   return (
+    <>
     <div className="page-container">
       <main id="content" className="main-container" role="main">
         <h1>{title}</h1>
@@ -37,6 +40,8 @@ const CaseStudiesLandingPage = () => {
         </ul>
       </main>
     </div>
+    <Footer footerProps={footerProps} styleName="footer" />
+    </>
   )
 }
 

@@ -51,7 +51,7 @@ const Footer = ({ footerProps, styleName }) => {
   // there is an id property if needed when refactored
 
   return (
-    Object.keys(about).length > 0 &&
+    Object.keys(about).length > 0 ?
     (<footer className={styleName} role="contentinfo">
 
       <div className="page-container">
@@ -94,7 +94,8 @@ const Footer = ({ footerProps, styleName }) => {
         </div>
       </div>
 
-    </footer>)
+    </footer>) : 
+    null
   );
 
 }

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import ArticleListPage from './ArticleListPage';
 import InjectHtml from "../home/InjectHtml";
+import Footer from '../footer/Footer';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
-const GenericLandingPage = ({cmsLocation, articleType}) => {
+const GenericLandingPage = ({cmsLocation, articleType, footerProps}) => {
 
   const [article, setArticle] = useState(null);
   const [data, setData] = useState(null);
@@ -29,6 +31,7 @@ const GenericLandingPage = ({cmsLocation, articleType}) => {
   if (isError || !article) return null;
 
   return (
+    <>
     <div className="page-container">
           <main className="main-container" id="content">
             <h1>{article.title}</h1>
@@ -36,6 +39,8 @@ const GenericLandingPage = ({cmsLocation, articleType}) => {
             <ArticleListPage article={article}/>
           </main>
     </div>
+    <Footer footerProps={footerProps} styleName="footer" />
+    </>
   )
 }
 
