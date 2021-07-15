@@ -6,7 +6,7 @@ import 'formdata-polyfill';
 
 const apiUrl = 'https://validator.openreferraluk.org/api';
 
-const onSubmitSetResponse = async (e, setResponse) => {
+const onSubmitSetResponse = (e, setResponse) => {
     e.preventDefault();
 
     const form = e.target;
@@ -24,7 +24,7 @@ const onSubmitSetResponse = async (e, setResponse) => {
         //referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: data
     })
-        .then(response => setResponse(response.json()))
+        .then(async response => setResponse(await response.json()))
         .catch(error => {
             console.log(error);
             setResponse({ success: false });
@@ -41,12 +41,17 @@ const ResponseMessage = ({ response }) => {
         return <div className="alert alert-success mt-1rem">Registered successfully</div>;
 
     if (errors)
-        return <div className="alert alert-danger mt-1rem"><ul>{errors.map(e => <li>{e}</li>)}</ul></div>;
+        return <div className="alert alert-danger mt-1rem">{errors.map(error => <div>{error.message}</div>)}</div>;
 
     if (error)
         return <div className="alert alert-danger mt-1rem">{error}</div>;
         
     return <div className="alert alert-danger mt-1rem">Registration unsuccessful</div>;
+};
+
+const FieldClassName = (field, response) => {
+    const { errors = [] } = response;
+    return `${errors.filter(error => error.field === field).length > 0 ? 'error': ''}`;
 };
 
 const KeepInformedSection = ({ section, index }) => {
@@ -56,9 +61,9 @@ const KeepInformedSection = ({ section, index }) => {
     return <HtmlSection key={section.id} index={index} section={section}>
         <form className="form-section" action={`${apiUrl}/registerUser`} method="post" onSubmit={onSubmit}>
             <h3>Sign up to our news letter</h3>
-            <label>Email address</label>
+            <label className="required">Email address</label>
             <div className="input-with-button">
-                <input type="text" id="email-address" name="email_address" />
+                <input type="text" id="email-address" name="email_address" className={FieldClassName('email_address', response)} />
                 <button type="submit" className="button button-primary">Subscribe</button>
             </div>
             <ResponseMessage response={response} />
@@ -75,13 +80,13 @@ const RegisterYourOrganisation = ({ section, index }) => {
         <InjectHtml itemKey={`${index}body`} paragraphText={section.sectionBody} />
 
         <div className="form-item">
-            <label htmlFor="organisation-name">Organisation name</label>
-            <input type="text" id="organisation-name" name="organisation_name" />
+            <label htmlFor="organisation-name" className="required">Organisation name</label>
+            <input type="text" id="organisation-name" name="organisation_name" className={FieldClassName('organisation_name', response)} />
         </div>
 
         <div className="form-item">
-            <label htmlFor="organisation-type">Organisation type</label>
-            <input type="text" id="organisation-type" name="organisation_type" list="organisation-types" />
+            <label htmlFor="organisation-type" className="required">Organisation type</label>
+            <input type="text" id="organisation-type" name="organisation_type" list="organisation-types" className={FieldClassName('organisation_type', response)} />
             <datalist id="organisation-types">
                 <option value="Commissioning a directory of services" />
                 <option value="Supplying directory software and API" />
@@ -91,8 +96,8 @@ const RegisterYourOrganisation = ({ section, index }) => {
         </div>
 
         <div className="form-item">
-            <label>Organisation adoptation stage</label>
-            <div className="check-list">
+            <label className="required">Organisation adoptation stage</label>
+            <div className={`check-list ${FieldClassName('adoptation_stage', response)}`}>
                 <div className="check-item">
                     <input type="radio" id="adoptation-considering" name="adoptation_stage" value="Considering" /> <label htmlFor="adoptation-considering">Considering</label>
                 </div>
@@ -115,10 +120,10 @@ const RegisterYourOrganisation = ({ section, index }) => {
 
         <div className="form-item">
             <label htmlFor="private-email-address">
-                Private email address
+                <span className="required">Private email address</span>
                 <small>So that we can follow-up with you to verify your organisation. Will not be shared.</small>
             </label>
-            <input type="text" id="private-email-address" name="private_email_address" />
+            <input type="text" id="private-email-address" name="private_email_address" className={FieldClassName('private_email_address', response)} />
         </div>
 
         <div className="form-item">
