@@ -820,7 +820,7 @@ footer {
 
 .card-link-container {
     padding-bottom: 1rem;
-    
+
     li {
         @include cardbox-dark;
         margin-top: $padSmall;
@@ -847,6 +847,31 @@ footer {
 
 /* ------------- HELPER CLASSES ------------- */
 
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+
+    &.alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    &.alert-warning {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }
+
+    &.alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+}
+
 .show-md {
     display: none;
 }
@@ -855,8 +880,16 @@ footer {
     display: none;
 }
 
+.mb-0 {
+    margin-bottom: 0;
+}
+
 .mb-1rem {
     margin-bottom: 1rem;
+}
+
+.mt-1rem {
+    margin-top: 1rem;
 }
 
 .checked::before,
@@ -1232,7 +1265,6 @@ button {
     }
 }
 
-
 .case-study {
     figure.image {
         img {
@@ -1256,8 +1288,11 @@ button {
         }
     }
 
-    .benefits, .boxed,
-    .further-information, .further-information-about-this-work, .dark-boxed {
+    .benefits,
+    .boxed,
+    .further-information,
+    .further-information-about-this-work,
+    .dark-boxed {
         background-color: $color-brand-lighter;
         padding: 2rem;
         border-radius: 0.5rem;
@@ -1269,7 +1304,9 @@ button {
         }
     }
 
-    .further-information, .further-information-about-this-work, .dark-boxed {
+    .further-information,
+    .further-information-about-this-work,
+    .dark-boxed {
         background-color: $color-brand-darker;
         color: white;
 
@@ -1283,7 +1320,7 @@ button {
         margin-bottom: 1.5rem;
     }
 
-    .case-study-related {        
+    .case-study-related {
         @include cardbox-dark;
         padding: 2rem;
 
@@ -1295,7 +1332,7 @@ button {
 
 .form-section {
     @include cardbox-dark;
-    
+
     padding: 20px;
     margin-top: 1rem;
 
@@ -1314,7 +1351,7 @@ button {
         }
     }
 
-    input[type=text] {
+    input[type="text"] {
         display: inline-block;
         padding: 0.75rem;
         margin: 0 1rem 0 0;
@@ -1325,7 +1362,7 @@ button {
         font-feature-settings: normal;
         font-size: 1.2rem;
         width: 100%;
-        
+
         &:focus-visible {
             outline: none !important;
         }
@@ -1352,26 +1389,27 @@ button {
 
         .check-item {
             flex: 1;
-            
-            input[type=checkbox], input[type=radio] {
+
+            input[type="checkbox"],
+            input[type="radio"] {
                 margin: 0;
                 padding-right: 1rem;
 
                 position: relative;
             }
 
-            input[type=radio] {
+            input[type="radio"] {
                 opacity: 0;
                 width: 0;
                 height: 0;
             }
 
-            input[type=radio]+label {
+            input[type="radio"] + label {
                 display: inline-block;
                 position: relative;
 
                 &::before {
-                    content: ' ';
+                    content: " ";
                     position: relative;
                     top: 0.25rem;
                     margin-right: 0.25rem;
@@ -1384,7 +1422,7 @@ button {
                 }
             }
 
-            input[type=radio]:checked+label {
+            input[type="radio"]:checked + label {
                 &::before {
                     background-color: $color-blue-darker;
                 }
@@ -1396,12 +1434,12 @@ button {
 .register-page {
     ul {
         list-style-type: none;
-        
+
         li {
             position: relative;
-            
+
             &::before {
-                content: '\2192';
+                content: "\2192";
                 position: absolute;
                 left: -2rem;
             }
