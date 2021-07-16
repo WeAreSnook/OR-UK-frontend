@@ -52,7 +52,7 @@ const Footer = ({ footerProps, styleName }) => {
 
   return (
     Object.keys(about).length > 0 &&
-    (<footer className={styleName} role="contentinfo">
+    (<footer className={styleName}>
 
       <div className="page-container">
         <div className="footer__top">
