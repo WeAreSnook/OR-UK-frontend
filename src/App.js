@@ -84,10 +84,10 @@ function App() {
             <Route path="/how-it-works/:slugField" render={({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" />}/>
             <Route path="/how-it-works" render={() =>  <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks"/> }/>
             <Route path="/community/case-studies/:slugField" render={({ match }) => <GenericContentPage cmsLocation={`/case-studies?slugfield=${match.params.slugField}`} articleType="CaseStudy" />} />
+            <Route path="/community/standard-community" render={() =>  <WhoIsUsing styleName="main"/> }/>
             <Route path="/community/case-studies" render={ () => <CaseStudiesLandingPage styleName="main"/> } />
             <Route path="/community" render={() =>  <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage"/> }/>
             <Route path="/contact-us" render={() => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" />} />
-            <Route path="/community/standard-community" render={() =>  <WhoIsUsing styleName="main"/> }/>
             <Route path="/accessibility-statement" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
             <Route path="/privacy-policy" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
             <Route path="/terms-conditions" render={({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" />} />
