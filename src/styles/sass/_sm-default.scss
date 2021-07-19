@@ -1351,7 +1351,8 @@ button {
         }
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"] {
         display: inline-block;
         padding: 0.75rem;
         margin: 0 1rem 0 0;

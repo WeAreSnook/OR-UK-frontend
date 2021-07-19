@@ -63,7 +63,7 @@ const KeepInformedSection = ({ section, index }) => {
             <h3>Sign up to our news letter</h3>
             <label className="required">Email address</label>
             <div className="input-with-button">
-                <input type="text" id="email-address" name="email_address" className={FieldClassName('email_address', response)} />
+                <input type="email" id="email-address" name="email_address" className={FieldClassName('email_address', response)} required />
                 <button type="submit" className="button button-primary">Subscribe</button>
             </div>
             <ResponseMessage response={response} />
@@ -81,12 +81,12 @@ const RegisterYourOrganisation = ({ section, index }) => {
 
         <div className="form-item">
             <label htmlFor="organisation-name" className="required">Organisation name</label>
-            <input type="text" id="organisation-name" name="organisation_name" className={FieldClassName('organisation_name', response)} />
+            <input type="text" id="organisation-name" name="organisation_name" className={FieldClassName('organisation_name', response)} required />
         </div>
 
         <div className="form-item">
             <label htmlFor="organisation-type" className="required">Organisation type</label>
-            <input type="text" id="organisation-type" name="organisation_type" list="organisation-types" className={FieldClassName('organisation_type', response)} />
+            <input type="text" id="organisation-type" name="organisation_type" list="organisation-types" className={FieldClassName('organisation_type', response)} required />
             <datalist id="organisation-types">
                 <option value="Commissioning a directory of services" />
                 <option value="Supplying directory software and API" />
@@ -123,7 +123,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
                 <span className="required">Private email address</span>
                 <small>So that we can follow-up with you to verify your organisation. Will not be shared.</small>
             </label>
-            <input type="text" id="private-email-address" name="private_email_address" className={FieldClassName('private_email_address', response)} />
+            <input type="email" id="private-email-address" name="private_email_address" className={FieldClassName('private_email_address', response)} required />
         </div>
 
         <div className="form-item">
@@ -131,7 +131,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
                 Public email address (optional)
                 <small>Will be sared alongside your organisation on our Who's using page.</small>
             </label>
-            <input type="text" id="public-email-address" name="public_email_address" />
+            <input type="email" id="public-email-address" name="public_email_address" />
         </div>
 
         <div className="form-item">
