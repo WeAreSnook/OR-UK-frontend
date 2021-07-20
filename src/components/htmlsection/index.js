@@ -1,26 +1,32 @@
-import InjectHtml from '../home/InjectHtml';
+import InjectHtml from "../home/InjectHtml";
 
-const HtmlSection = ({ sections }) => {
+export const covertHeadingToIdentifier = (heading) => {
+  if (!heading || typeof heading !== "string") return null;
+  return heading.toLowerCase().replace(/\s/g, "-");
+};
 
-    return (
-        sections.map((item, index) => {
+export const HtmlSection = ({ section, index, children }) => {
+  const header = section.sectionHeading ? (
+    <h2 id={`section-${index + 1}-heading`}>{section.sectionHeading}</h2>
+  ) : null;
 
-            let header = null;
-            if (item.sectionHeading) {
-                header = (
-                    <h2 id={`section-${index + 1}-heading`}>
-                        {item.sectionHeading}
-                    </h2>
-                )
-            }
-            return (
-                <InjectHtml key={ item.id } 
-                            itemKey={`${index}body`} 
-                            paragraphText={item.sectionBody} 
-                            paragraphHeader={ header } />
-            )
-        })
-    )
-}
-export default HtmlSection;
+  const sectionClassName = covertHeadingToIdentifier(section.sectionHeading);
 
+  return (
+    <div className={sectionClassName}>
+      <InjectHtml
+        itemKey={`${index}body`}
+        paragraphText={section.sectionBody}
+        paragraphHeader={header}
+      />
+      {children}
+    </div>
+  );
+};
+
+const HtmlSections = ({ sections }) =>
+  sections.map((section, index) => (
+    <HtmlSection key={section.id} index={index} section={section} />
+  ));
+
+export default HtmlSections;

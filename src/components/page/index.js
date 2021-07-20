@@ -1,4 +1,4 @@
-import HtmlSection from '../htmlsection';
+import HtmlSections from '../htmlsection';
 
 function ContentPage(props, {styleName}) {
 
@@ -9,7 +9,7 @@ function ContentPage(props, {styleName}) {
     
     return (
       
-        <HtmlSection sections={myStruct} /> 
+        <HtmlSections sections={myStruct} /> 
            
     );
 }
