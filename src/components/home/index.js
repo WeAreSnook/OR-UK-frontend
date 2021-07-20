@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import ReadNextItem from '../readnext';
 import TwoColumnGrid from './sidebyside/';
 import Video from '../shared/video';
+import PageTitle from '../genericcontentpage/PageTitle';
 //refactoring
 //look at structure of api response for page
 //remove env var setting and checks for now as I cannot pick them up on the server at the moment
@@ -27,57 +28,57 @@ function HomePage({ homePageProps, classname }) {
 
     let caseStudyLinks = [];
     caseStudyLinks.push(caseStudiesLink);
-   
-    return (
 
-        <main id="content" className="main-container">
+    return <main id="content" className="main-container">
+        <PageTitle title={''} />
+
+        <div className="page-container">
+            <Section headingText={title} bodyText={body} styleName="section" />
+            <TwoColumnGrid id="right" leftSideContent={<InjectHtml paragraphText={introParagraph} />} rightSideContent={<Video name="oruk-video" height="250" />} />
+
+            {caseStudiesLink && caseStudiesLink.id && <p id="case-studies" className="card-content"><Link to={caseStudiesLink.url}>{caseStudiesLink.TextToDisplay}</Link></p>}&nbsp;
+        </div>
+
+        {quote && <figure role="figure" className="figure-block">
             <div className="page-container">
-                <Section headingText={title} bodyText={body} styleName="section" />
-                <TwoColumnGrid id="right"  leftSideContent={ <InjectHtml paragraphText={introParagraph}/>}  rightSideContent={  <Video name="oruk-video" height="250" /> }/>
-               
-                {caseStudiesLink && caseStudiesLink.id && <p id="case-studies" className="card-content"><Link to={caseStudiesLink.url}>{caseStudiesLink.TextToDisplay}</Link></p>}&nbsp;
-            </div>
-
-            {quote && <figure role="figure" className="figure-block">
-                <div className="page-container">
-                    <div className="format">
-                        <blockquote>{homePageProps.PullQuote.quote}</blockquote>
-                        <figcaption>{homePageProps.PullQuote.Attribution && homePageProps.PullQuote.Attribution}</figcaption>
-                    </div>
+                <div className="format">
+                    <blockquote>{homePageProps.PullQuote.quote}</blockquote>
+                    <figcaption>{homePageProps.PullQuote.Attribution && homePageProps.PullQuote.Attribution}</figcaption>
                 </div>
-            </figure>}
+            </div>
+        </figure>}
 
-            <div className="page-container">
-            
-                {BenefitsAndOpportunities && <InjectHtml paragraphText={BenefitsAndOpportunities} />}
+        <div className="page-container">
 
-                {homePageProps.CommunityStatsBox && homePageProps.CommunityStatsBox.title && <Who {...homePageProps.CommunityStatsBox} />}
+            {BenefitsAndOpportunities && <InjectHtml paragraphText={BenefitsAndOpportunities} sectionClassName='format list-items-boxed benefits' />}
 
-                {benefitsSection && benefitsSection.title && <Title title={benefitsSection.title} />}
-                {benefitsSection && benefitsSection.introParagraph && benefitsSection.benefits && <p>{benefitsSection.introParagraph}</p>}
-                {benefitsSection && benefitsSection.benefits &&
-                    <div id={`${benefitsSection.id}_title`} className="cardgrid">
+            {homePageProps.CommunityStatsBox && homePageProps.CommunityStatsBox.title && <Who {...homePageProps.CommunityStatsBox} />}
 
-                        <CardList key={benefitsSection.id} bodyText={benefitsSection.benefits.benefitText} paragraphTextList={benefitsSection.benefits} contentImage={benefitsSection.benefits.icon} />
-                    </div>
-                }
-                <hr />
-                { readNextLinks &&  
-                        ( <div>
-                            <ul className="listnostyle readlinkscard">
-                              {readNextLinks.map((next, index) => { 
-                                return <ReadNextItem key={index} linkItem={next} styleName="listnostyle readlinksitem"/>
-                                })}
-                            </ul>
-                        </div>)
-        }
-       </div>
+            {benefitsSection && benefitsSection.title && <Title title={benefitsSection.title} />}
+            {benefitsSection && benefitsSection.introParagraph && benefitsSection.benefits && <p>{benefitsSection.introParagraph}</p>}
+            {benefitsSection && benefitsSection.benefits &&
+                <div id={`${benefitsSection.id}_title`} className="cardgrid">
 
-        </main>
-    );
+                    <CardList key={benefitsSection.id} bodyText={benefitsSection.benefits.benefitText} paragraphTextList={benefitsSection.benefits} contentImage={benefitsSection.benefits.icon} />
+                </div>
+            }
+            <hr />
+            {readNextLinks &&
+                (<div>
+                    <ul className="listnostyle readlinkscard">
+                        {readNextLinks.map((next, index) => {
+                            return <ReadNextItem key={index} linkItem={next} styleName="listnostyle readlinksitem" />
+                        })}
+                    </ul>
+                </div>)
+            }
+        </div>
+        
+    </main>;
 }
 
 HomePage.propTypes = {
     links: PropTypes.array
 }
+
 export default HomePage;
