@@ -1,18 +1,22 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server'
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
-const InjectHtml = ({paragraphText, itemKey } ) => {
+const InjectHtml = ({ paragraphText, itemKey, paragraphHeader } ) => {
   
 
     const cleanMarkup = (dirtyUnsafe) => {
-        const sanitizedParam = DOMPurify.sanitize(dirtyUnsafe);
+        const headerString = ReactDOMServer.renderToStaticMarkup(paragraphHeader);
+        const sanitizedParam = DOMPurify.sanitize(headerString + dirtyUnsafe);
         return sanitizedParam;
     }
     return(
-   
-         <section key={itemKey} className="format" dangerouslySetInnerHTML={{ __html: cleanMarkup(paragraphText) }}></section>
-    
+        <section 
+            key={itemKey} 
+            className="format" 
+            dangerouslySetInnerHTML={{ __html: cleanMarkup(paragraphText) }}>
+        </section>
     )
 }
 
