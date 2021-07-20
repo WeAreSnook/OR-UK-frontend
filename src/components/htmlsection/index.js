@@ -1,22 +1,26 @@
-import { Fragment } from 'react';
 import InjectHtml from '../home/InjectHtml';
 
-const HtmlSection = ({sections}) => {
+export const covertHeadingToIdentifier = heading => {
+    if (!heading || typeof heading !== 'string')
+        return null;    
+    return heading.toLowerCase().replace(/\s/g, '-');
+};
 
-    return ( 
+export const HtmlSection = ({ section, index, children }) => {
+    const header = section.sectionHeading
+        ? <h2 id={`section-${index + 1}-heading`}><InjectHtml itemKey={`${index}head`} paragraphText={section.sectionHeading} /></h2>
+        : null;
 
-        sections.map((item, index) => {
+    const sectionClassName = covertHeadingToIdentifier(section.sectionHeading);
 
-        let header = <></>
-        if (item.sectionHeading){
-            header = <><h2 id={`section-${index+1}-heading`}><InjectHtml itemKey={`${index}head`} paragraphText={item.sectionHeading}/></h2></>
-        }
-        return <Fragment key={item.id}>
-             {header}  
-             <InjectHtml itemKey={`${index}body`} paragraphText={item.sectionBody}/>
-         </Fragment>
-        })
-        )
-    }
-    export default HtmlSection;
+    return <div className={sectionClassName}>
+        {header}
+        <InjectHtml itemKey={`${index}body`} paragraphText={section.sectionBody} />
+        {children}
+    </div>;
+};
+
+const HtmlSections = ({ sections }) => sections.map((section, index) => <HtmlSection key={section.id} index={index} section={section} />);
+
+export default HtmlSections;
 

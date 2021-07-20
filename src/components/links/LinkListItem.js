@@ -10,14 +10,12 @@ const LinkListItem = ({ link }) => {
 	if (link.isExternal) {
 		linkElToRender = <LinkExternal link={link} rel="noreferrer" />
 	} else {
-		linkElToRender = <Link to={link.url}>	{link.TextToDisplay} </Link>
+		linkElToRender = <Link to={link.url}>{link.TextToDisplay}</Link>
 	}
 
-	return (
-		<li key={link.id}>
-			{linkElToRender}
-		</li>
-	)
+	return <li key={link.id}>
+		{linkElToRender}
+	</li>;
 }
 
 export default LinkListItem;
