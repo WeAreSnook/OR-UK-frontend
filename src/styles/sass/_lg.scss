@@ -281,8 +281,8 @@ footer {
     ul {
       display: -ms-grid;
       display: grid;
-      -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
+      -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
       column-gap: 30px;
 
       li:nth-child(2){
@@ -312,3 +312,8 @@ footer {
   }
 }
 
+.format.list-items-boxed {
+  ul {
+    width: calc(100vw - 2 * #{$padSmall});
+  }
+}

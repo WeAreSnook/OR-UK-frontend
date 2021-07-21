@@ -6,9 +6,10 @@ import useOukapi from '../../helpers/dataFetch';
 import CardList from './Cards/CardList';
 import Title from '../shared/title';
 import LinkWithTitleSection from "./LinkWithTitleSection";
+import BackButton from '../genericcontentpage/BackButton';
 
 //build a picture
-const WhoIsUsing = () => {
+const WhoIsUsing = ({ parent }) => {
 
     //use styles prop
 
@@ -46,13 +47,16 @@ const WhoIsUsing = () => {
     //need id make sure all keys set
     console.log(id);
 
-    if (isFetching || isError) return null;
+    if (isFetching || isError)
+        return null;
 
     return (
         <main id="content" className="main-container">
             <div className="page-container flex-container">
                 <SideMenu subMenu={getObjects(orgSections)} />
-                <article className="flex-right">
+                <article className="flex-right">                    
+                    <BackButton parent={parent} />
+
                     <h1>{pageTitle}</h1>
 
                     <Numbers numbers={numbers} />
@@ -73,9 +77,7 @@ const WhoIsUsing = () => {
                                 <CardList key={organisation.id} organisationList={organisation.Organisation} type="org" />
                             </ul>
                         </Fragment>
-
-                    })
-                    }
+                    })}
 
                     <LinkWithTitleSection {...registerLinkWithTitle} />
 
