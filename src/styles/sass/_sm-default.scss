@@ -589,6 +589,8 @@ footer {
   transform: translate(-50%, -100%);
 
   &:focus {
+    position: relative;
+    display: inline-block;
     transform: translate(-50%, 0%);
   }
 }
