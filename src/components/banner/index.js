@@ -5,19 +5,27 @@ import LinkExternal from "../footer/LinkExternal";
 
 const Banner = () => {
 
-    const link = {
-        url:"https://developers.openreferraluk.org",
+    const developersLink = {
+        url: "https://developers.openreferraluk.org",
         TextToDisplay: "For developers",
         labelText: "For developers",
         external: true
-      }
+    };
 
-return (
-<div className="banner">
-    <Link to="/" className="footer__logo link-with-image"><img src={logo} alt="Open Referral UK" /></Link>
-    {/**extract to small component for header and footer */}
-    <LinkExternal link={link} styleName="button button-primary button-small button-light" />
-</div>
+    const forumLink = {
+      url: "https://forum.openreferraluk.org/",
+      TextToDisplay: "Forum",
+      labelText: "Forum",
+      external: true
+    };
+
+    return (
+        <div className="banner">
+            <Link to="/" className="footer__logo link-with-image"><img src={logo} alt="Open Referral UK" /></Link>
+            {/**extract to small component for header and footer */}
+            <LinkExternal link={forumLink} styleName="forum-link button button-primary button-small button-light" />
+            <LinkExternal link={developersLink} styleName="button button-primary button-small button-light" />
+        </div>
     )
 }
 export default Banner;
