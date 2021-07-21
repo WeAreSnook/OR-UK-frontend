@@ -1,42 +1,41 @@
 import { useState, useEffect } from 'react';
 import ArticleListPage from './ArticleListPage';
 import InjectHtml from "../home/InjectHtml";
+import PageTitle from '../genericcontentpage/PageTitle';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+const GenericLandingPage = ({ cmsLocation, articleType }) => {
 
-const GenericLandingPage = ({cmsLocation, articleType}) => {
+    const [article, setArticle] = useState(null);
+    const [data, setData] = useState(null);
+    const [isError, setIsError] = useState(null);
 
-  const [article, setArticle] = useState(null);
-  const [data, setData] = useState(null);
-  const [isError, setIsError] = useState(null);
+    useEffect(() => {
+        fetch(new URL(cmsLocation, BASE_URL).href)
+            .then(res => res.json())
+            .then(jsonRes => setData(jsonRes))
+            .catch(err => setIsError(err))
+    }, [cmsLocation]);
 
-  useEffect(() => {
-    fetch(new URL(cmsLocation, BASE_URL).href)
-      .then(res => res.json())
-      .then(jsonRes => setData(jsonRes))
-      .catch(err => setIsError(err))
-  }, [cmsLocation]);
+    useEffect(() => {
+        // check we have data, no error, and if data is array, array has elements
+        if (data && !isError && (!Array.isArray(data) || data.length)) {
+            const pageData = Array.isArray(data) ? data[0] : data;
+            setArticle(pageData[articleType])
+        };
 
-  useEffect(() => {
-    // check we have data, no error, and if data is array, array has elements
-    if (data && !isError && (!Array.isArray(data) || data.length)) {
-      const pageData = Array.isArray(data) ? data[0] : data;
-      setArticle(pageData[articleType])
-    };
+    }, [article, data, isError, articleType]);
 
-  }, [article, data, isError, articleType]);
+    if (isError || !article) return null;
 
-  if (isError || !article) return null;
-
-  return (
-    <div className="page-container">
-          <main className="main-container" id="content">
+    return <div className="page-container">
+        <main className="main-container" id="content">
+            <PageTitle title={article.title} />
             <h1>{article.title}</h1>
             <InjectHtml paragraphText={article.introParagraph} />
-            <ArticleListPage article={article}/>
-          </main>
-    </div>
-  )
-}
+            <ArticleListPage article={article} />
+        </main>
+    </div>;
+};
 
 export default GenericLandingPage;
