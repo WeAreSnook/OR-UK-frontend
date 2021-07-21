@@ -34,14 +34,6 @@ const CardList = ({ id, itemList, styles }) => {
       }
     });
 
-    // const logosHolder = list
-    //     .filter(item => !!item.CompanyLogo)
-    //     .map(item => <li key={item.id ? `${item.id}_itemcard` : ""} className="img">
-    //         <a href={item.link} className="link-with-image">
-    //             <ImageCard id={id} logo={item} styleName="" />
-    //         </a>
-    //     </li>);
-
     return <ul className="home-card-content">{logosHolder}</ul>;
   };
 
