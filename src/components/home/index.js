@@ -49,18 +49,9 @@ function HomePage({ homePageProps, classname }) {
         &nbsp;
       </div>
 
-      {/* {quote && <figure role="figure" className="figure-block">
-            <div className="page-container">
-                <div className="format">
-                    <blockquote>{homePageProps.PullQuote.quote}</blockquote>
-                    <figcaption>{homePageProps.PullQuote.Attribution && homePageProps.PullQuote.Attribution}</figcaption>
-                </div>
-            </div>
-        </figure>} */}
-
       {quote && (
         <section className="figure-block">
-          <figure role="figure" className="page-container">
+          <figure className="page-container">
             <blockquote className="format">
               {homePageProps.PullQuote.quote}
             </blockquote>
