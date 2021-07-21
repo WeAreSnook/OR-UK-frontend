@@ -488,8 +488,8 @@ main article {
 }
 
 footer {
-    background-color: $color-brand-darker;
-    color: white;
+  background-color: $color-brand-darker;
+  color: white;
 
     .footer__top {
         padding-top: $padSmall;
@@ -662,7 +662,6 @@ footer {
             color: $color-brand-dark;
             font-size: 2.5rem;
             font-weight: $boldWeight;
-            margin-right: 0.2em;
             line-height: 1.1;
         }
 

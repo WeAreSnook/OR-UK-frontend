@@ -1,24 +1,24 @@
-import React from 'react';
-
+import React from "react";
 
 const Numbers = ({ numbers }) => {
+  if (!numbers) return null;
 
-    if (!numbers) return null;
-    
-    //return a single badge pass params
+  //return a single badge pass params
 
-    const keyArray =  Object.keys(numbers).filter(n => n !== 'id' )
-    
-    const numbersAray =  keyArray.map(key => {
-       
-        return <li className="numbers" key={key}><span>{numbers[key]}</span>{key}</li>
+  const keyArray = Object.keys(numbers).filter((n) => n !== "id");
 
-    } );
-
+  const numbersAray = keyArray.map((key) => {
     return (
-        <div className="who">
-            <ul className="numbers-container">{numbersAray}</ul>
-        </div>
+      <li className="numbers" key={key}>
+        <span>{numbers[key]}</span> {key}
+      </li>
     );
-}
-    export default Numbers;
+  });
+
+  return (
+    <div className="who">
+      <ul className="numbers-container">{numbersAray}</ul>
+    </div>
+  );
+};
+export default Numbers;
