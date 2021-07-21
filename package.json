@@ -12,6 +12,7 @@
     "env-cmd": "^10.1.0",
     "enzyme": "^3.11.0",
     "express": "^4.17.1",
+    "formdata-polyfill": "^4.0.6",
     "inter-ui": "^3.18.0",
     "jest-enzyme": "^7.1.2",
     "jquery": "^3.6.0",
@@ -19,6 +20,7 @@
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
     "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-cookie": "^4.0.3",
     "react-dom": "^17.0.2",
     "react-markdown": "^5.0.3",
     "react-router-dom": "^5.2.0",
@@ -32,7 +34,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build:production"
   },
   "eslintConfig": {
     "extends": [

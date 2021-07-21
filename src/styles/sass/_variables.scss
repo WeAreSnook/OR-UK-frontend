@@ -1,23 +1,24 @@
-$defaultFont: 'Inter', sans-serif;
+$defaultFont: "Inter", sans-serif;
 $normalWeight: 400;
 $midWeight: 500;
 $boldWeight: 600;
 
-$color-brand: #5AC09E;
+$color-brand: #5ac09e;
+$color-brand-lighter: lighten($color-brand, 33.333%);
 $color-brand-20: rgba(90, 192, 158, 0.2); // brand at 20% opacity
-$color-brand-dark: #418F76;
-$color-brand-darker: #28614F; // AA on page-bg
-$color-text: #2A3834; // body text // AAA on page-bg
-$color-text-muted: #4F5956; // muted text // AA on page-bg
-$color-highlight: #FFD152; 
-$color-blue-dark: #135E75; // interactive // AAA on page-bg
-$color-blue-darker: #0F4C5E; // interactive:hover // AAA on page-bg
-$color-blue-light: #197A99; // AA on page-bg
-$color-purple: #6426B3; // visited links // AAA on page-bg
-$color-red-light: #DD400F;
-$color-red-dark: #A61E00; // AAA on page-bg
-$color-page-bg: #FCF9F5;
-$color-white: #FFFFFF;
+$color-brand-dark: #418f76;
+$color-brand-darker: #28614f; // AA on page-bg
+$color-text: #2a3834; // body text // AAA on page-bg
+$color-text-muted: #4f5956; // muted text // AA on page-bg
+$color-highlight: #ffd152;
+$color-blue-dark: #135e75; // interactive // AAA on page-bg
+$color-blue-darker: #0f4c5e; // interactive:hover // AAA on page-bg
+$color-blue-light: #197a99; // AA on page-bg
+$color-purple: #6426b3; // visited links // AAA on page-bg
+$color-red-light: #dd400f;
+$color-red-dark: #a61e00; // AAA on page-bg
+$color-page-bg: #fcf9f5;
+$color-white: #ffffff;
 
 // need media queries for spacing
 $gutter: 10px;

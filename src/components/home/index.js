@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import ReadNextItem from "../readnext";
 import TwoColumnGrid from "./sidebyside/";
 import Video from "../shared/video";
+import PageTitle from "../genericcontentpage/PageTitle";
 //refactoring
 //look at structure of api response for page
 //remove env var setting and checks for now as I cannot pick them up on the server at the moment
@@ -29,6 +30,8 @@ function HomePage({ homePageProps, classname }) {
 
   return (
     <main id="content" className="main-container">
+      <PageTitle title={""} />
+
       <div className="page-container">
         <Section headingText={title} bodyText={body} styleName="section" />
         <TwoColumnGrid
@@ -46,9 +49,18 @@ function HomePage({ homePageProps, classname }) {
         &nbsp;
       </div>
 
+      {/* {quote && <figure role="figure" className="figure-block">
+            <div className="page-container">
+                <div className="format">
+                    <blockquote>{homePageProps.PullQuote.quote}</blockquote>
+                    <figcaption>{homePageProps.PullQuote.Attribution && homePageProps.PullQuote.Attribution}</figcaption>
+                </div>
+            </div>
+        </figure>} */}
+
       {quote && (
-        <section>
-          <figure role="figure" className="figure-block">
+        <section className="figure-block">
+          <figure role="figure" className="page-container">
             <blockquote className="format">
               {homePageProps.PullQuote.quote}
             </blockquote>
@@ -62,7 +74,10 @@ function HomePage({ homePageProps, classname }) {
 
       <div className="page-container">
         {BenefitsAndOpportunities && (
-          <InjectHtml paragraphText={BenefitsAndOpportunities} />
+          <InjectHtml
+            paragraphText={BenefitsAndOpportunities}
+            sectionClassName="format list-items-boxed benefits"
+          />
         )}
 
         {homePageProps.CommunityStatsBox &&
@@ -110,4 +125,5 @@ function HomePage({ homePageProps, classname }) {
 HomePage.propTypes = {
   links: PropTypes.array,
 };
+
 export default HomePage;
