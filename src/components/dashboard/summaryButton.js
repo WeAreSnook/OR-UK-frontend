@@ -13,7 +13,7 @@ const SummaryButton = ({ summary }) => {
           Read
         </button>
         <div className={`modal-background ${isOpen ? "visible" : ""}`}>
-          <div className={`modal ${isOpen ? "visible" : ""}`}>
+          <div className={`modal ${isOpen ? "visible" : ""}`} role="dialog" aria-modal="true">
             <button className="close-button button-link" onClick={() => setIsOpen(false)}>
               ×
             </button>
