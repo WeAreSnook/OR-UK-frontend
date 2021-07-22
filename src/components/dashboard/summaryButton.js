@@ -5,17 +5,19 @@ const SummaryButton = ({ summary, rowNum }) => {
 
   if (!summary) return <span>-</span>;
 
+  const dialogId = `dialog${rowNum}content`;
+
   return (
     <>
       <button className="button-link" onClick={() => setIsOpen(true)}>
         Read
       </button>
       <div className={`modal-background ${isOpen ? "visible" : ""}`}>
-        <div className="modal">
+        <div className="modal" role="dialog" aria-labelledby={dialogId}>
           <button className="close-button button-link" onClick={() => setIsOpen(false)}>
             ×
           </button>
-          <p id={`dialog${rowNum}content`}>{summary}</p>
+          <p id={dialogId}>{summary}</p>
         </div>
       </div>
     </>
