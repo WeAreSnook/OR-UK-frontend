@@ -16,23 +16,25 @@ const CardList = ({ id, itemList, styles }) => {
 
   const BuildList = ({ list }) => {
     addPadding();
-    const logosHolder = list.map((item) => {
-      if (item.CompanyLogo) {
-        return (
-          <li key={item.id ? `${item.id}_itemcard` : ""} className="img">
-            <a
-              href={item.link}
-              className="link-with-image"
-              aria-label={item.CompanyLogo.caption}
-            >
-              <ImageCard id={id} logo={item} styleName="" />
-            </a>
-          </li>
-        );
-      } else {
-        return <li key={i++} className="img"></li>;
-      }
-    });
+    const logosHolder = list
+      .filter((item) => !!item.CompanyLogo)
+      .map((item) => {
+        if (item.CompanyLogo) {
+          return (
+            <li key={item.id ? `${item.id}_itemcard` : ""} className="img">
+              <a
+                href={item.link}
+                className="link-with-image"
+                aria-label={item.CompanyLogo.caption}
+              >
+                <ImageCard id={id} logo={item} styleName="" />
+              </a>
+            </li>
+          );
+        } else {
+          return <li key={i++} className="img"></li>;
+        }
+      });
 
     return <ul className="home-card-content">{logosHolder}</ul>;
   };
