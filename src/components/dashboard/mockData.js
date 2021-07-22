@@ -252,7 +252,7 @@ const mockData = [
     {
         "url": "https://openreferral.localgovdrupal.org/openreferral/v1",
         "label": "Cumbria Council",
-        "summary": "Sample directory from the open source Local Gove Drupal project. See https://deploy-preview-55--trusting-noyce-aebebc.netlify.app/blog/openreferral.html",
+        "summary": "Sample directory from the open source LocalGov Drupal project. See https://deploy-preview-55--trusting-noyce-aebebc.netlify.app/blog/openreferral.html",
         "organisationLabel": "Cumbria Council",
         "organisationUrl": "https://www.cumbria.gov.uk/",
         "developerLabel": "LG Drupal",
