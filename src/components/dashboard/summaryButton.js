@@ -7,15 +7,21 @@ const SummaryButton = ({ summary }) => {
     if (!summary)
         return <span>-</span>;
 
-    return <>
-        <button className='button-link' onClick={() => setIsOpen(true)}>Read</button>
-        <div className={`modal-background ${isOpen ? 'visible' : ''}`}>
-            <div className='modal'>
-                <button className='close-button button-link' onClick={() => setIsOpen(false)}>×</button>
-                {summary}
-            </div>
+    return (
+      <>
+        <button className="button-link" onClick={() => setIsOpen(true)}>
+          Read
+        </button>
+        <div className={`modal-background ${isOpen ? "visible" : ""}`}>
+          <div className={`modal ${isOpen ? "visible" : ""}`}>
+            <button className="close-button button-link" onClick={() => setIsOpen(false)}>
+              ×
+            </button>
+            {summary}
+          </div>
         </div>
-    </>;
+      </>
+    );
 };
 
 export default SummaryButton;
