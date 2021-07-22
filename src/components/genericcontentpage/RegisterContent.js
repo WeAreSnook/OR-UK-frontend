@@ -54,22 +54,22 @@ const FieldClassName = (field, response) => {
     return `${errors.filter(error => error.field === field).length > 0 ? 'error': ''}`;
 };
 
-const KeepInformedSection = ({ section, index }) => {
-    const [response, setResponse] = useState({});
-    const onSubmit = e => onSubmitSetResponse(e, setResponse);
+// const KeepInformedSection = ({ section, index }) => {
+//     const [response, setResponse] = useState({});
+//     const onSubmit = e => onSubmitSetResponse(e, setResponse);
 
-    return <HtmlSection key={section.id} index={index} section={section}>
-        <form className="form-section" action={`${apiUrl}/registerUser`} method="post" onSubmit={onSubmit}>
-            <h3>Sign up to our news letter</h3>
-            <label className="required">Email address</label>
-            <div className="input-with-button">
-                <input type="email" id="email-address" name="email_address" className={FieldClassName('email_address', response)} required />
-                <button type="submit" className="button button-primary">Subscribe</button>
-            </div>
-            <ResponseMessage response={response} />
-        </form>
-    </HtmlSection>;
-};
+//     return <HtmlSection key={section.id} index={index} section={section}>
+//         <form className="form-section" action={`${apiUrl}/registerUser`} method="post" onSubmit={onSubmit}>
+//             <h3>Sign up to our news letter</h3>
+//             <label className="required">Email address</label>
+//             <div className="input-with-button">
+//                 <input type="email" id="email-address" name="email_address" className={FieldClassName('email_address', response)} required />
+//                 <button type="submit" className="button button-primary">Subscribe</button>
+//             </div>
+//             <ResponseMessage response={response} />
+//         </form>
+//     </HtmlSection>;
+// };
 
 const RegisterYourOrganisation = ({ section, index }) => {    
     const [response, setResponse] = useState({});
@@ -90,7 +90,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
             <datalist id="organisation-types">
                 <option value="Commissioning a directory of services" />
                 <option value="Supplying directory software and API" />
-                <option value="Consuming an Open Referral compliant API" />
+                <option value="Consuming an Open Referral UK compliant API" />
                 <option value="Maintaining service data" />
             </datalist>
         </div>
@@ -147,7 +147,7 @@ const RegisterSections = ({ sections }) => sections.map((section, index) => {
     const identifier = covertHeadingToIdentifier(section.sectionHeading);
 
     if (identifier === `keep-informed`)
-        return <KeepInformedSection key={section.id} index={index} section={section} />;
+        return null;//<KeepInformedSection key={section.id} index={index} section={section} />;
 
     if (identifier === `register-your-organisation`)
         return <RegisterYourOrganisation key={section.id} index={index} section={section} />;
