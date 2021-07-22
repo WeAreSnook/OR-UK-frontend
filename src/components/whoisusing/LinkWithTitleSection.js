@@ -1,13 +1,13 @@
 import LinkExternal from '../footer/LinkExternal';
 
-const LinkWithTitle = ({ link }) => {
+const LinkWithTitle = ({ link, title }) => {
   if (!link) return null;
 
   return (
     <>
       <hr />
       <section>
-      {link.TextToDisplay && <h3>{link.TextToDisplay}</h3> }
+      {link.TextToDisplay && <h3>{title}</h3> }
         <p>
           <LinkExternal link={link} styleName=""/> 
           </p>
