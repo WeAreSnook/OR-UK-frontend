@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 import LinkExternal from "../footer/LinkExternal";
 
 const Header = ({ mainMenu, topMenuId }) => {
-  const link = {
+  const forumLink = {
+    url: "https://forum.openreferraluk.org/",
+    TextToDisplay: "Forum",
+    labelText: "Forum",
+    external: true,
+  };
+
+  const developersLink = {
     url: "https://developers.openreferraluk.org",
     TextToDisplay: "For developers",
     labelText: "For developers",
@@ -47,7 +54,12 @@ const Header = ({ mainMenu, topMenuId }) => {
           {isActive ? "Close" : "Menu"}
         </button>
         <LinkExternal
-          link={link}
+          link={forumLink}
+          rel="noreferrer"
+          styleName="forum-link button button-secondary button-header show-md"
+        />
+        <LinkExternal
+          link={developersLink}
           rel="noreferrer"
           styleName="button button-secondary button-header show-md"
         />
@@ -57,7 +69,8 @@ const Header = ({ mainMenu, topMenuId }) => {
         mainMenu={mainMenu}
         topMenuId={topMenuId.toString()}
         menuButton={isActive}
-        developersLink={link}
+        forumLink={forumLink}
+        developersLink={developersLink}
       />
     </header>
   );

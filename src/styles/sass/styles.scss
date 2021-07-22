@@ -6,7 +6,6 @@
 @include inter-ui.weight-500;
 @include inter-ui.weight-600;
 
-
 @import "reset";
 
 @import "mixins";
@@ -15,10 +14,10 @@
 
 @import "sm-default";
 
-@media only screen and (min-width: 40em) {
-	@import "md";
+@media only screen and (min-width: 44em) {
+  @import "md";
 }
 
 @media only screen and (min-width: 64em) {
-	@import "lg";
-} 
+  @import "lg";
+}

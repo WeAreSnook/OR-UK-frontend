@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom"
+
 const SkipToContent = () => {
   return (
-      <a href="#content" className="skiplink">Skip to main content</a>
+      <Link to="#content" className="skiplink">Skip to main content</Link>
   )
 };
 
