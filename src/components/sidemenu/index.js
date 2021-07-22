@@ -11,7 +11,7 @@ const SideMenu = ({ subMenu }) => {
 
 		<>
 			<aside className="sidebar flex-left">
-				<h4 className="sidebar__heading">On this page</h4>
+				<h2 className="sidebar__heading">On this page</h2>
 				<nav>
 					<ul>
 						{subMenu.map((menuItem, index) => {
