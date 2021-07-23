@@ -1244,6 +1244,10 @@ button {
 
   a {
     color: inherit;
+
+    &:focus {
+      color: initial;
+    }
   }
 
   #cookietextwrapper {
