@@ -11,25 +11,27 @@ const Card = ({organisation, styleName}) => {
  
     let logo = <></>;
 
-    if (organisationLogo && organisationLogo.CompanyLogo && organisationLogo.link){
-        logo = <a href={organisationLogo.link} className="card__img-container link-with-image"><CompanyLogo logo={organisationLogo.CompanyLogo}/></a>
-    }else{
-        logo = <CompanyLogo logo={organisationLogo.CompanyLogo}/>
+    if (organisationLogo && organisationLogo.CompanyLogo) {
+      logo = (
+        <div className="card__img-container">
+          <CompanyLogo logo={organisationLogo.CompanyLogo} />
+        </div>
+      );
     }
 
     return (
-        <li key={id} className={styleName}>
-            {logo}
-            <h3>{orgTitle}</h3>
-            <ul className="listnostyle card__sub-list">
-
-            { orgLinks && Object.keys(orgLinks).length > 0 && orgLinks.map(orgLink => {
-                orgLink.external = true;
-                return <LinkListItem key={`${id}${orgLink.id}`} link={orgLink}/>
-            }) 
-            }
-            </ul>
-          </li>
+      <li key={id} className={styleName}>
+        {logo}
+        <h3>{orgTitle}</h3>
+        <ul className="listnostyle card__sub-list">
+          {orgLinks &&
+            Object.keys(orgLinks).length > 0 &&
+            orgLinks.map((orgLink) => {
+              orgLink.external = true;
+              return <LinkListItem key={`${id}${orgLink.id}`} link={orgLink} />;
+            })}
+        </ul>
+      </li>
     );
 };
 
