@@ -1137,7 +1137,13 @@ th:last-child {
   .modal {
     position: relative;
 
-    display: block;
+    // display:none;-ing the modal until visible prevents screenreader and 
+    // keyboard-only users from focusing on the modal's close button too soon.
+    display: none;
+
+    &.visible {
+      display: block
+    }
 
     background-color: white;
     min-height: 2rem;

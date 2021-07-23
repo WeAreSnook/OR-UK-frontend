@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const SummaryButton = ({ summary, rowNum }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,8 +13,16 @@ const SummaryButton = ({ summary, rowNum }) => {
         Read
       </button>
       <div className={`modal-background ${isOpen ? "visible" : ""}`}>
-        <div className="modal" role="dialog" aria-labelledby={dialogId}>
-          <button className="close-button button-link" onClick={() => setIsOpen(false)}>
+        <div
+          className={`modal ${isOpen ? "visible" : ""}`}
+          role="dialog"
+          aria-labelledby={dialogId}
+          aria-modal="true"
+        >
+          <button
+            className="close-button button-link"
+            onClick={() => setIsOpen(false)}
+          >
             ×
           </button>
           <p id={dialogId}>{summary}</p>
