@@ -3,8 +3,14 @@ import { useState } from "react";
 const SummaryButton = ({ summary, rowNum }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!summary) return <span>-</span>;
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "scroll";
+  }
 
+  if (!summary) return <span>-</span>;
+  
   const dialogId = `dialog${rowNum}content`;
 
   return (
@@ -23,7 +29,7 @@ const SummaryButton = ({ summary, rowNum }) => {
             className="close-button button-link"
             onClick={() => setIsOpen(false)}
           >
-            ×
+            close
           </button>
           <p id={dialogId}>{summary}</p>
         </div>
