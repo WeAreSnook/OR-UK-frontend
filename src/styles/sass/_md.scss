@@ -641,6 +641,10 @@ hr {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: $padSmall;
+
+  li a {
+    display: inline-block;
+  }
 }
 
 /* ------------- HELPER CLASSES ------------- */
