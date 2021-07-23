@@ -1146,12 +1146,10 @@ th:last-child {
     padding: 1.4rem;
     padding-right: 2rem;
     padding-top: 6rem;
-    // max-width: calc(100% - 1rem);
-    // min-height: 10rem;
+    padding-bottom: 6rem;
 
-    // margin: 0 0.8rem 0rem 0.8rem;
     width: 100vw;
-    height: calc(100vh);
+    height: 100vh;
     overflow-y: hidden;
 
     .close-button {
