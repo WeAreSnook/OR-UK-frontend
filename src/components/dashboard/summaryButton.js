@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SummaryButton = ({ summary }) => {
+const SummaryButton = ({ summary, rowNum }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   if (isOpen) {
@@ -10,6 +10,8 @@ const SummaryButton = ({ summary }) => {
   }
 
   if (!summary) return <span>-</span>;
+  
+  const dialogId = `dialog${rowNum}content`;
 
   return (
     <>
@@ -17,14 +19,19 @@ const SummaryButton = ({ summary }) => {
         Read
       </button>
       <div className={`modal-background ${isOpen ? "visible" : ""}`}>
-        <div className="modal">
+        <div
+          className={`modal ${isOpen ? "visible" : ""}`}
+          role="dialog"
+          aria-labelledby={dialogId}
+          aria-modal="true"
+        >
           <button
             className="close-button button-link"
             onClick={() => setIsOpen(false)}
           >
             close
           </button>
-          {summary}
+          <p id={dialogId}>{summary}</p>
         </div>
       </div>
     </>

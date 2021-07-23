@@ -55,11 +55,16 @@ const FieldClassName = (field, response) => {
 };
 
 const KeepInformedSection = ({ section, index }) => {
-    const [response, setResponse] = useState({});
-    const onSubmit = e => onSubmitSetResponse(e, setResponse);
+    //const [response, setResponse] = useState({});
+    //const onSubmit = e => onSubmitSetResponse(e, setResponse);
 
     return <HtmlSection key={section.id} index={index} section={section}>
-        <form className="form-section" action={`${apiUrl}/registerUser`} method="post" onSubmit={onSubmit}>
+        <div className="mt-1rem">
+            <a href="https://openreferraluk.us1.list-manage.com/subscribe?u=9cdac16b200ed03ca1159653a&id=00056900bd" className="button button-primary">
+                Subscribe to the Open Referral UK mailing list
+            </a>
+        </div>
+        {/* <form className="form-section" action={`${apiUrl}/registerUser`} method="post" onSubmit={onSubmit}>
             <h3>Sign up to our news letter</h3>
             <label className="required">Email address</label>
             <div className="input-with-button">
@@ -67,7 +72,7 @@ const KeepInformedSection = ({ section, index }) => {
                 <button type="submit" className="button button-primary">Subscribe</button>
             </div>
             <ResponseMessage response={response} />
-        </form>
+        </form> */}
     </HtmlSection>;
 };
 
@@ -90,7 +95,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
             <datalist id="organisation-types">
                 <option value="Commissioning a directory of services" />
                 <option value="Supplying directory software and API" />
-                <option value="Consuming an Open Referral compliant API" />
+                <option value="Consuming an Open Referral UK compliant API" />
                 <option value="Maintaining service data" />
             </datalist>
         </div>

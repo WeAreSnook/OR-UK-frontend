@@ -16,7 +16,7 @@ const Table = ({ data, help }) => <table className="feeds">
         </tr>
     </thead>
     <tbody>
-        {data.map(item => <Row key={item.url} item={item} />)}
+        {data.map((item, index) => <Row key={item.url} item={item} index={index}/>)}
     </tbody>
 </table>;
 

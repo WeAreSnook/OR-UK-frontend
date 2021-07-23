@@ -33,17 +33,19 @@ const LandingPage = ({ parent }) => {
 		return <CaseStudyOverview {...caseStudy} key={caseStudy.id} />
 	});
 
-	return <div className="page-container">
-		<main id="content" className="main-container" role="main">
-			<PageTitle title={title} />
-			<BackButton parent={parent} />
-			<h1>{title}</h1>
-			<InjectHtml paragraphText={introParagraph} />
-			<ul className="card-link-container listnostyle">
-				{caseStudyOverviewElements}
-			</ul>
-		</main>
-	</div>;
+	return (
+    <div className="page-container">
+      <main id="content" className="main-container">
+        <PageTitle title={title} />
+        <BackButton parent={parent} />
+        <h1>{title}</h1>
+        <InjectHtml paragraphText={introParagraph} />
+        <ul className="card-link-container listnostyle">
+          {caseStudyOverviewElements}
+        </ul>
+      </main>
+    </div>
+  );
 }
 
 export default LandingPage;
