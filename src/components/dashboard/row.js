@@ -4,7 +4,7 @@ import LastChecked from './lastChecked';
 import { OrganisationLabel, DeveloperLabel } from './labelLink';
 import SummaryButton from './summaryButton';
 
-const Row = ({ item }) => <tr>
+const Row = ({ item, index }) => <tr>
     <td><OrganisationLabel item={item} /></td>
     <td><DeveloperLabel item={item} /></td>
     <td><Checkbox isChecked={item.isUp} errorMessage={''} positiveMessage={'Live'} /></td>
@@ -12,7 +12,7 @@ const Row = ({ item }) => <tr>
     <td><IsServiceExampleValidCheckbox item={item} /></td>
     <td><IsSearchEnabled item={item} /></td>
     <td><LastChecked item={item} /></td>
-    <td><SummaryButton summary={item.summary} /></td>
+    <td><SummaryButton summary={item.summary} rowNum={index+1}/></td>
     <td><ApiLink item={item} /></td>
 </tr>;
 
