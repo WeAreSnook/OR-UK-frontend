@@ -1137,7 +1137,13 @@ th:last-child {
   .modal {
     position: relative;
 
-    display: block;
+    // display:none;-ing the modal until visible prevents screenreader and 
+    // keyboard-only users from focusing on the modal's close button too soon.
+    display: none;
+
+    &.visible {
+      display: block
+    }
 
     background-color: white;
     min-height: 2rem;
@@ -1244,6 +1250,10 @@ button {
 
   a {
     color: inherit;
+
+    &:focus {
+      color: initial;
+    }
   }
 
   #cookietextwrapper {
@@ -1253,6 +1263,24 @@ button {
   #rejectTracking {
     border: 3px solid $color-white;
     background-color: $color-brand-darker;
+
+    &:focus {
+      outline: 0;
+      text-decoration: none;
+      background-color: $color-highlight;
+      color: $color-text;
+      border-color: $color-text;
+    }
+
+    &:hover {
+      background-color: $color-blue-darker;
+      border-color: $color-text;
+      color: $color-highlight;
+      -webkit-text-fill-color: $color-highlight;
+      cursor: pointer;
+      box-shadow: 0px 0px 0px 4px $color-highlight;
+      text-decoration: none;
+    }
   }
 
   .cookiemessage {
