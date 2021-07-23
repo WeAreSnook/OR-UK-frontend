@@ -3,6 +3,12 @@ import { useState } from "react";
 const SummaryButton = ({ summary }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "scroll";
+  }
+
   if (!summary) return <span>-</span>;
 
   return (
