@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const SummaryButton = ({ summary, rowNum }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const readRef = useRef(null);
+  const closeRef = useRef(null);
 
-  if (isOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "scroll";
-  }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      closeRef.current.focus();
+    } else {
+      document.body.style.overflow = "scroll";
+      readRef.current.focus();
+    }
+  }, [isOpen]);
 
   if (!summary) return <span>-</span>;
-  
+
   const dialogId = `dialog${rowNum}content`;
 
   return (
     <>
-      <button className="button-link" onClick={() => setIsOpen(true)}>
+      <button
+        className="button-link"
+        onClick={() => setIsOpen(true)}
+        ref={readRef}
+      >
         Read
       </button>
       <div className={`modal-background ${isOpen ? "visible" : ""}`}>
@@ -28,6 +38,7 @@ const SummaryButton = ({ summary, rowNum }) => {
           <button
             className="close-button button-link"
             onClick={() => setIsOpen(false)}
+            ref={closeRef}
           >
             close
           </button>
