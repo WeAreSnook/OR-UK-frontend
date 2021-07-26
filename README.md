@@ -43,6 +43,24 @@ Open Referral UK defines a standard structure to meet this need for a consistent
 
 Visit Open referral uk @ https://openreferraluk.org/
 
+## 'Dashboard' page
+The route `/dashboard` renders the [data feed dashboard](https://openreferraluk.org/dashboard). This page pulls data from the [service validator API](https://validator.openreferraluk.org/api), which will block all requests other than those coming from the following domains:
+```
+"http://dev.openreferraluk.org",
+"https://dev.openreferraluk.org",
+"http://beta.openreferraluk.org",
+"https://beta.openreferraluk.org",
+"http://openreferraluk.org",
+"https://openreferraluk.org",
+"https://validator.openreferraluk.org",
+"https://exporter.openreferraluk.org",
+"https://tools.openreferraluk.org"
+``` 
+
+In order to get around CORS issues when accessing this page locally, there are two solutions suggested by Matt from Porism (thanks!):
+1. Access a static copy of the JSON at the route `/devdashboard`
+2. Point one of the above addresses (likely: `http://dev.openreferraluk.org`) to your local build in your dev environment.
+
 # Setting up
 
 # Creating your production build for the server
@@ -51,8 +69,6 @@ Update the configuration file for the client virtual host
     Enable the configuration if not already enabled
     yarn build
     Copy contents of build to document root specified in the virtual host configuration ....
-
-
 
 
 
