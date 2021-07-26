@@ -10,10 +10,12 @@ const CompanyLogo = ({logo}) => {
     let logoUrl = BASE_URL ? `${BASE_URL}${formats.thumbnail.url }`:"";
 
     return (
-        <>
-       {  formats && (formats.thumbnail) && <div className="CompanyLogo" style={{ backgroundImage: `url(${logoUrl})` }} title={alternativeText ? alternativeText : "company_logo"}/> }
-       </>
-    )
+      <>
+        {formats && formats.thumbnail && (
+          <div className="CompanyLogo" style={{ backgroundImage: `url(${logoUrl})` }} />
+        )}
+      </>
+    );
 }
 
 CompanyLogo.propTypes = {
