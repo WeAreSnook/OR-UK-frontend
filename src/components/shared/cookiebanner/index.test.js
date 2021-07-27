@@ -13,7 +13,7 @@ describe("Renders the component", ()=>{
         expect(screen.getByRole("region", {name: "cookie banner"}))
     });
 
-    it("it contains one header", ()=> {
+    it("It contains one header", ()=> {
         expect(screen.getAllByRole("heading", {level: 2}).length).toEqual(1)
     });
 })
