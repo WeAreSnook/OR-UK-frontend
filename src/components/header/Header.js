@@ -105,29 +105,28 @@ const Header = ({ mainMenu, topMenuId }) => {
           </button>
         </div>
 
-        <div className="nav-container">
-          <div className="button-container">
-            <LinkExternal
-              link={forumLink}
-              rel="noreferrer"
-              styleName="forum-link button button-secondary button-header show-md"
-            />
-            <LinkExternal
-              link={developersLink}
-              rel="noreferrer"
-              styleName="button button-secondary button-header show-md"
-            />
-          </div>
-          <Navigator
-            onClick={toggleClass}
-            mainMenu={mainMenu}
-            topMenuId={topMenuId.toString()}
-            menuButton={isActive}
-            forumLink={forumLink}
-            developersLink={developersLink}
+        <div className="button-container">
+          <LinkExternal
+            link={forumLink}
+            rel="noreferrer"
+            styleName="forum-link button button-secondary button-header show-md"
+          />
+          <LinkExternal
+            link={developersLink}
+            rel="noreferrer"
+            styleName="button button-secondary button-header show-md"
           />
         </div>
+        <Navigator
+          onClick={toggleClass}
+          mainMenu={mainMenu}
+          topMenuId={topMenuId.toString()}
+          menuButton={isActive}
+          forumLink={forumLink}
+          developersLink={developersLink}
+        />
       </div>
+      <div className="nav-underline"></div>
     </header>
   );
 };

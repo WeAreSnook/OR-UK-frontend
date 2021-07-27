@@ -96,6 +96,20 @@ blockquote {
 }
 
 .global-header-x {
+  .header-container {
+    padding: 15px 30px 0px 30px;
+    display: grid;
+    grid-template-areas: "logo buttons" "logo nav";
+
+    .logo-container {
+      grid-area: logo;
+    }
+
+    .button-container {
+      grid-area: buttons;
+    }
+  }
+
   .global-header__logo {
     max-width: 200px;
   }
@@ -109,7 +123,7 @@ blockquote {
 
 .global-nav-x {
   padding: 0 0 1em 0;
-  // margin-top: -3em;
+  grid-area: nav;
 
   ul {
     justify-content: flex-end;
