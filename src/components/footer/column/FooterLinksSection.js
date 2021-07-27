@@ -8,7 +8,6 @@ const FooterLinksSection = ({title, links}) => {
       <ul>
         {
           links.map(link => {
-
             return <LinkListItem key={link.id} link={link} />
           })}
       </ul>

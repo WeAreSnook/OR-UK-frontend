@@ -52,7 +52,7 @@ const Footer = ({ footerProps, styleName }) => {
 
   return (
     Object.keys(about).length > 0 &&
-    (<footer className={styleName} role="contentinfo">
+    (<footer className={styleName}>
 
       <div className="page-container">
         <div className="footer__top">
@@ -85,6 +85,7 @@ const Footer = ({ footerProps, styleName }) => {
               <small>Copyright &copy; 2019–2021 Open Referral UK</small>
             </p>
             <ul>
+              <li key="0"><a href="https://datastudio.google.com/u/0/reporting/42d2977d-50c8-4ef0-b35d-b1e8f531c4a8/page/uASQC?s=o3Lxx3np8YE"><small>Website analytics</small></a></li>
               <li key="1"><Link to="/accessibility-statement"><small>Accessibility statement</small></Link></li>
               <li key="2"><Link to="/terms-conditions"><small>Terms &amp; Conditions</small></Link></li>
               <li key="3"><Link to="/privacy-policy"><small>Privacy Policy</small></Link></li>
