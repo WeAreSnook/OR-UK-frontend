@@ -101,16 +101,16 @@ const RegisterYourOrganisation = ({ section, index }) => {
         </div>
 
         <div className="form-item">
-            <label className="required">Organisation adoptation stage</label>
+            <label className="required">Organisation adoption stage</label>
             <div className={`check-list ${FieldClassName('adoptation_stage', response)}`}>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-considering" name="adoptation_stage" value="Considering" /> <label htmlFor="adoptation-considering">Considering</label>
+                    <input type="radio" id="adoption-considering" name="adoptation_stage" value="Considering" /> <label htmlFor="adoption-considering">Considering</label>
                 </div>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-adopting" name="adoptation_stage" value="Adopting" /> <label htmlFor="adoptation-adopting">Adopting</label>
+                    <input type="radio" id="adoption-adopting" name="adoptation_stage" value="Adopting" /> <label htmlFor="adoption-adopting">Adopting</label>
                 </div>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-adopted" name="adoptation_stage" value="Adopted" /> <label htmlFor="adoptation-adopted">Adopted</label>
+                    <input type="radio" id="adoption-adopted" name="adoptation_stage" value="Adopted" /> <label htmlFor="adoption-adopted">Adopted</label>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
         <div className="form-item">
             <label htmlFor="url">
                 Web link URL (optional)
-                <small>Provide a link for people to read about your adoptation or organisation.</small>
+                <small>Provide a link for people to read about your adoption or organisation.</small>
             </label>
             <input type="text" id="url" name="url" />
         </div>
@@ -134,7 +134,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
         <div className="form-item">
             <label htmlFor="public-email-address">
                 Public email address (optional)
-                <small>Will be sared alongside your organisation on our Who's using page.</small>
+                <small>Will be shared alongside your organisation on our Who's using page.</small>
             </label>
             <input type="email" id="public-email-address" name="public_email_address" />
         </div>
