@@ -46,9 +46,7 @@ const Navigator = ({
   return (
     <nav
       onClick={onClick}
-      className={
-        menuButton ? "global-nav-x--open global-nav-x" : "global-nav-x"
-      }
+      className={menuButton ? "global-nav--open global-nav" : "global-nav"}
     >
       <LinkExternal
         link={forumLink}
