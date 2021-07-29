@@ -1,19 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { shallow } from "enzyme";
-import HomePage from './components/home';
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
 
-test('renders correctly', () => {
-  render(<App />);
-  const imgElement = screen.getByAltText(/Open Referral Logo/i);
+test("renders correctly", async () => {
+  const routerHistory = createMemoryHistory({
+    initialEntries: ["/"],
+  });
+
+  render(
+    <Router history={routerHistory}>
+      <App />
+    </Router>
+  );
+  const imgElement = await screen.findByAltText("Open Referral UK");
   expect(imgElement).toBeInTheDocument();
 });
-
-it("renders without crashing", () => {
-  const result = shallow(<App/>);
-  const html = (
-    <div className="app">
-      <HomePage/>
-    </div>
-  )
-})
