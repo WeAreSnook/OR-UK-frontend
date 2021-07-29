@@ -10,20 +10,46 @@
   .forum-link.show-md {
     margin-bottom: initial;
   }
+
+  .logo-container {
+    border-bottom: 0px;
+    display: inline-flex;
+    width: auto;
+  }
+
+  .button-container {
+    flex-grow: 1;
+    padding: 10px 10px;
+    align-items: center;
+
+    a {
+      height: 2.75em;
+    }
+  }
+  .nav-container {
+    width: auto;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px 10px;
+  }
+}
+.global-nav--open {
+  border-bottom: none;
+}
+
+.nav-underline {
+  border-bottom: 2px solid rgba(90, 192, 158, 0.2);
 }
 
 .global-nav {
-  display: block; // shown always on md and bigger
-
-  grid-column-start: 1;
-  grid-column-end: 6;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  padding: 0.5em 0 1em 0;
+  display: flex; // shown always on md and bigger
+  width: 100%;
+  padding: 0.5em 10px 1em 10px;
 
   ul {
     display: flex;
     justify-content: space-between;
+    width: 100%;
   }
 
   li {
