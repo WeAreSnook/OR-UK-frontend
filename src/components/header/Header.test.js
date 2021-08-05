@@ -3,12 +3,6 @@ import Header from "./Header";
 import mockMainMenuData from "./mockMainMenuData";
 import { BrowserRouter as Router } from "react-router-dom";
 
-// header contains logo with link
-// contains hamburger menu on mobile
-// link to forum
-// link to developers
-// contains navigation elements
-
 describe("<Header> test", () => {
   beforeEach(() => {
     render(
@@ -30,5 +24,10 @@ describe("<Header> test", () => {
   it("displays developer links", () => {
     const forumLinks = screen.getAllByRole("link", { name: /developers/i });
     expect(forumLinks).toHaveLength(2);
+  });
+
+  it("displays nav", () => {
+    const nav = screen.getByRole("navigation");
+    expect(nav).toBeInTheDocument();
   });
 });
