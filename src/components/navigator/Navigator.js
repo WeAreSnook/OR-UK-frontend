@@ -1,28 +1,37 @@
-import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
-import LinkExternal from '../footer/LinkExternal';
+import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
+import LinkExternal from "../footer/LinkExternal";
 
-const Navigator = ({mainMenu, menuButton, onClick, forumLink, developersLink}) => {
+const Navigator = ({
+  mainMenu,
+  menuButton,
+  onClick,
+  forumLink,
+  developersLink,
+}) => {
   const isLongestMatch = (mainMenu, index) => {
-    if (window.location.href.indexOf(mainMenu[index].link) === -1)
-    {
+    if (window.location.href.indexOf(mainMenu[index].link) === -1) {
       return false;
     }
     let lastMatch = mainMenu[index].link.length;
-    for(let i =0;i<mainMenu.length;i++){
-      if (i !== index && window.location.href.indexOf(mainMenu[i].link) > -1 && lastMatch < mainMenu[i].link.length){
+    for (let i = 0; i < mainMenu.length; i++) {
+      if (
+        i !== index &&
+        window.location.href.indexOf(mainMenu[i].link) > -1 &&
+        lastMatch < mainMenu[i].link.length
+      ) {
         return false;
       }
     }
     return true;
-  }
-  
+  };
+
   const menuItems = mainMenu.map(function (name, index) {
-    let cssClass = 'nav-link';
+    let cssClass = "nav-link";
 
     // apply active class if we are on the current
     if (mainMenu[index] != null && isLongestMatch(mainMenu, index)) {
-      cssClass += ' active';
+      cssClass += " active";
     }
 
     return (
@@ -32,27 +41,32 @@ const Navigator = ({mainMenu, menuButton, onClick, forumLink, developersLink}) =
         </Link>
       </li>
     );
-  })
+  });
 
   return (
-    
-    <nav onClick={onClick} className={menuButton ? 'global-nav--open global-nav': "global-nav"}>
-      <div className="page-container">
-        <LinkExternal link={forumLink} rel="noreferrer" styleName="forum-link button button-secondary button-header hide-md" />
-        <LinkExternal link={developersLink} rel="noreferrer" styleName="button button-secondary button-header hide-md" />
-        <ul>
-            {menuItems}
-        </ul>
-      </div>
-    </nav>   
-
+    <nav
+      onClick={onClick}
+      className={menuButton ? "global-nav--open global-nav" : "global-nav"}
+    >
+      <LinkExternal
+        link={forumLink}
+        rel="noreferrer"
+        styleName="forum-link button button-secondary button-header hide-md"
+      />
+      <LinkExternal
+        link={developersLink}
+        rel="noreferrer"
+        styleName="button button-secondary button-header hide-md"
+      />
+      <ul>{menuItems}</ul>
+    </nav>
   );
-}
+};
 Navigator.propTypes = {
   mainMenu: PropTypes.array.isRequired,
   topMenuId: PropTypes.string.isRequired,
   menuButton: PropTypes.bool,
-  onClick: PropTypes.func
-}
+  onClick: PropTypes.func,
+};
 
 export default Navigator;
