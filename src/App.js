@@ -106,7 +106,7 @@ function App() {
         { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
         { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" /> },
         { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" /> },
-        { path: "/standard-community", render: () => <WhoIsUsing styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
+        { path: "/community/standard-community", render: () => <WhoIsUsing styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
         { path: "/accessibility-statement", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
         { path: "/privacy-policy", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
         { path: "/terms-conditions", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
@@ -164,6 +164,7 @@ function App() {
             <div className="page-wrapper">
                 <Switch>
                     {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} component={r.component} render={r.render} />)}
+                    <Redirect from="/standard-community" to="/community//standard-community" />
                     <Redirect to="/404" />
                 </Switch>
             </div>
