@@ -164,7 +164,7 @@ function App() {
             <div className="page-wrapper">
                 <Switch>
                     {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} component={r.component} render={r.render} />)}
-                    <Redirect from="/standard-community" to="/community//standard-community" />
+                    <Redirect from="/standard-community" to="/community/standard-community" />
                     <Redirect to="/404" />
                 </Switch>
             </div>
