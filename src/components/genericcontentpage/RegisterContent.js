@@ -38,15 +38,15 @@ const ResponseMessage = ({ response }) => {
         return null;
 
     if (success)
-        return <div className="alert alert-success mt-1rem">Registered successfully</div>;
+        return <div className="alert alert-success mt-1rem" aria-live="polite">Registered successfully</div>;
 
     if (errors)
-        return <div className="alert alert-danger mt-1rem">{errors.map(error => <div>{error.message}</div>)}</div>;
+        return <div className="alert alert-danger mt-1rem" aria-live="polite">{errors.map(error => <div>{error.message}</div>)}</div>;
 
     if (error)
-        return <div className="alert alert-danger mt-1rem">{error}</div>;
+        return <div className="alert alert-danger mt-1rem" aria-live="polite">{error}</div>;
         
-    return <div className="alert alert-danger mt-1rem">Registration unsuccessful</div>;
+    return <div className="alert alert-danger mt-1rem" aria-live="polite">Registration unsuccessful</div>;
 };
 
 const FieldClassName = (field, response) => {
