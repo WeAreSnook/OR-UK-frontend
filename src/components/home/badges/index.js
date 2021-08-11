@@ -25,7 +25,7 @@ const Badge = ({
       <>
         <ul className="numbers-container">{numbersAray}</ul>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScZU1lVUDZoruKzT86MV1Ko0v7LTBSA9-Y8fd9a-I73-jv2KA/viewform"
+          href="/register"
           className="button button-primary"
         >
           {label}

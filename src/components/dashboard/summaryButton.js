@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 const SummaryButton = ({ summary, rowNum }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const readRef = useRef(null);
+  //const readRef = useRef(null);
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const SummaryButton = ({ summary, rowNum }) => {
       closeRef.current.focus();
     } else {
       document.body.style.overflow = "scroll";
-      readRef.current.focus();
+      //readRef.current.focus();
     }
   }, [isOpen]);
 
@@ -24,7 +24,7 @@ const SummaryButton = ({ summary, rowNum }) => {
       <button
         className="button-link"
         onClick={() => setIsOpen(true)}
-        ref={readRef}
+        //ref={readRef}
       >
         Read
       </button>

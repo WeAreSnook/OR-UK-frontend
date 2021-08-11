@@ -38,15 +38,15 @@ const ResponseMessage = ({ response }) => {
         return null;
 
     if (success)
-        return <div className="alert alert-success mt-1rem">Registered successfully</div>;
+        return <div className="alert alert-success mt-1rem" aria-live="polite">Registered successfully</div>;
 
     if (errors)
-        return <div className="alert alert-danger mt-1rem">{errors.map(error => <div>{error.message}</div>)}</div>;
+        return <div className="alert alert-danger mt-1rem" aria-live="polite">{errors.map(error => <div>{error.message}</div>)}</div>;
 
     if (error)
-        return <div className="alert alert-danger mt-1rem">{error}</div>;
+        return <div className="alert alert-danger mt-1rem" aria-live="polite">{error}</div>;
         
-    return <div className="alert alert-danger mt-1rem">Registration unsuccessful</div>;
+    return <div className="alert alert-danger mt-1rem" aria-live="polite">Registration unsuccessful</div>;
 };
 
 const FieldClassName = (field, response) => {
@@ -101,16 +101,16 @@ const RegisterYourOrganisation = ({ section, index }) => {
         </div>
 
         <div className="form-item">
-            <label className="required">Organisation adoptation stage</label>
+            <label className="required">Organisation adoption stage</label>
             <div className={`check-list ${FieldClassName('adoptation_stage', response)}`}>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-considering" name="adoptation_stage" value="Considering" /> <label htmlFor="adoptation-considering">Considering</label>
+                    <input type="radio" id="adoption-considering" name="adoptation_stage" value="Considering" /> <label htmlFor="adoption-considering">Considering</label>
                 </div>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-adopting" name="adoptation_stage" value="Adopting" /> <label htmlFor="adoptation-adopting">Adopting</label>
+                    <input type="radio" id="adoption-adopting" name="adoptation_stage" value="Adopting" /> <label htmlFor="adoption-adopting">Adopting</label>
                 </div>
                 <div className="check-item">
-                    <input type="radio" id="adoptation-adopted" name="adoptation_stage" value="Adopted" /> <label htmlFor="adoptation-adopted">Adopted</label>
+                    <input type="radio" id="adoption-adopted" name="adoptation_stage" value="Adopted" /> <label htmlFor="adoption-adopted">Adopted</label>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
         <div className="form-item">
             <label htmlFor="url">
                 Web link URL (optional)
-                <small>Provide a link for people to read about your adoptation or organisation.</small>
+                <small>Provide a link for people to read about your adoption or organisation.</small>
             </label>
             <input type="text" id="url" name="url" />
         </div>
@@ -134,7 +134,7 @@ const RegisterYourOrganisation = ({ section, index }) => {
         <div className="form-item">
             <label htmlFor="public-email-address">
                 Public email address (optional)
-                <small>Will be sared alongside your organisation on our Who's using page.</small>
+                <small>Will be shared alongside your organisation on our Who's using page.</small>
             </label>
             <input type="email" id="public-email-address" name="public_email_address" />
         </div>
