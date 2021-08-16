@@ -101,7 +101,7 @@ function App() {
     const routes = [
         { exact: true, path: "/", render: () => (<HomePage contentRef={contentRef} homePageProps={homeProps} classname="main" />) },
         { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" contentRef={contentRef} /> },
-        { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} contentRef={contentRef} /> },
+        { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} /> },
         { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" contentRef={contentRef} /> },
         { path: "/community/case-studies/:slugField", render: ({ match }) => <CaseStudyPage slugField={match.params.slugField} /> },
         { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
