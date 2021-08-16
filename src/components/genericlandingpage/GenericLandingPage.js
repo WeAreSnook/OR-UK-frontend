@@ -4,7 +4,7 @@ import InjectHtml from "../home/InjectHtml";
 import PageTitle from '../genericcontentpage/PageTitle';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const GenericLandingPage = ({ cmsLocation, articleType }) => {
+const GenericLandingPage = ({ cmsLocation, articleType, contentRef }) => {
 
     const [article, setArticle] = useState(null);
     const [data, setData] = useState(null);
@@ -29,7 +29,7 @@ const GenericLandingPage = ({ cmsLocation, articleType }) => {
     if (isError || !article) return null;
 
     return <div className="page-container">
-        <main className="main-container" id="content">
+        <main className="main-container" ref={contentRef} id="content">
             <PageTitle title={article.title} />
             <h1>{article.title}</h1>
             <InjectHtml paragraphText={article.introParagraph} />
