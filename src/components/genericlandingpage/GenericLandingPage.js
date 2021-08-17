@@ -9,7 +9,7 @@ const GenericLandingPage = ({ cmsLocation, articleType, contentRef }) => {
     const [article, setArticle] = useState(null);
     const [data, setData] = useState(null);
     const [isError, setIsError] = useState(null);
-
+    
     useEffect(() => {
         fetch(new URL(cmsLocation, BASE_URL).href)
             .then(res => res.json())

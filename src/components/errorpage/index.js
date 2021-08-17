@@ -1,7 +1,7 @@
 import React from 'react';
 import BackButton from '../genericcontentpage/BackButton';
 
-const NotFound = ({ parent }) => <main id="content" className="main-container">
+const NotFound = ({ parent, contentRef }) => <main id="content" className="main-container" ref={contentRef} >
     <div className="page-container flex-container">
         <article className="flex-right">
             <BackButton parent={parent} />
