@@ -9,7 +9,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 const CASE_STUDIES_LANDING_PAGE = process.env.REACT_APP_CASE_STUDIES_LANDING_PAGE;
 const CASE_STUDIES = process.env.REACT_APP_CASE_STUDIES;
 
-const LandingPage = ({ parent }) => {
+const LandingPage = ({ parent, contentRef }) => {
 	const [title, setTitle] = useState("");
 	const [introParagraph, setIntroParagraph] = useState("");
 
@@ -34,7 +34,7 @@ const LandingPage = ({ parent }) => {
 	});
 
 	return (
-    <div className="page-container">
+    <div className="page-container" ref={contentRef}>
       <main id="content" className="main-container">
         <PageTitle title={title} />
         <BackButton parent={parent} />

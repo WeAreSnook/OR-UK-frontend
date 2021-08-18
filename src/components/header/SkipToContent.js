@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useRef } from 'react';
 
-const SkipToContent = () => {
+const SkipToContent = ({ contentRef }) => {
+  const skipLink = useRef(null);
+
   return (
-      <Link to="#content" className="skiplink">Skip to main content</Link>
+      <Link ref={skipLink} to="#content" onClick={() => { if (skipLink.current && contentRef.current) { skipLink.current.blur(); contentRef.current.focus()}}} className="skiplink">Skip to main content</Link>
   )
 };
 

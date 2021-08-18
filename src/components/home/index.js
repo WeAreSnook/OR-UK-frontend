@@ -14,7 +14,7 @@ import PageTitle from "../genericcontentpage/PageTitle";
 //look at structure of api response for page
 //remove env var setting and checks for now as I cannot pick them up on the server at the moment
 
-function HomePage({ homePageProps, classname }) {
+function HomePage({ homePageProps, contentRef, classname }) {
   const {
     heroBanner: { body, title },
     PullQuote: { quote },
@@ -29,7 +29,7 @@ function HomePage({ homePageProps, classname }) {
   caseStudyLinks.push(caseStudiesLink);
 
   return (
-    <main id="content" className="main-container">
+    <main id="content" ref={contentRef} className="main-container">
       <PageTitle title={""} />
 
       <div className="page-container">

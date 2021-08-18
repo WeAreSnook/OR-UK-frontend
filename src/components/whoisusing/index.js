@@ -9,7 +9,7 @@ import LinkWithTitleSection from "./LinkWithTitleSection";
 import BackButton from '../genericcontentpage/BackButton';
 
 //build a picture
-const WhoIsUsing = ({ parent }) => {
+const WhoIsUsing = ({ parent, contentRef }) => {
 
     //use styles prop
 
@@ -51,7 +51,7 @@ const WhoIsUsing = ({ parent }) => {
         return null;
 
     return (
-        <main id="content" className="main-container">
+        <main id="content" className="main-container" ref={contentRef}>
             <div className="page-container flex-container">
                 <SideMenu subMenu={getObjects(orgSections)} />
                 <article className="flex-right">                    

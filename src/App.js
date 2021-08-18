@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -50,6 +50,7 @@ const initGoogleAnalyticsIfCookie = () => {
 //refactor
 //pull data as needed perhaps on first call of page?
 function App() {
+    const contentRef = useRef();
     useEffect(() => {
         initGoogleAnalyticsIfCookie();
     }, []);
@@ -94,25 +95,25 @@ function App() {
     const footerProps = data;
 
     const routes = [
-        { exact: true, path: "/", render: () => (<HomePage homePageProps={homeProps} classname="main" />) },
-        { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" /> },
-        { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} /> },
-        { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" /> },
-        { path: "/community/case-studies/:slugField", render: ({ match }) => <CaseStudyPage slugField={match.params.slugField} /> },
-        { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
-        { path: "/community/standard-community", render: () => <WhoIsUsing styleName="main" parent={{ path: `/community`, title: `Community` }} /> },
-        { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" /> },
-        { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" /> },
-        { path: "/accessibility-statement", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
-        { path: "/privacy-policy", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
-        { path: "/terms-conditions", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
-        { path: "/show-error", component: GenericErrorPage },
-        { path: "/open-referral-uk-video-transcript", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
-        { path: "/dashboard", render: () => <Dashboard /> },
-        { path: "/devdashboard", render: () => <Dashboard overrideData={mockData} /> },
-        { path: "/register", render: ({ location }) => <RegisterPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" /> },
-        { path: "/preview", render: () => <Preview /> },
-        { path: "/404", component: NotFound }
+        { exact: true, path: "/", render: () => (<HomePage contentRef={contentRef} homePageProps={homeProps} classname="main" />) },
+        { path: "/about-standard", render: () => <GenericContentPage cmsLocation={ABOUT_PAGE} articleType="about" contentRef={contentRef} /> },
+        { path: "/how-it-works/:slugField", render: ({ match }) => <GenericContentPage cmsLocation={`/pages?slugfield=${match.params.slugField}`} articleType="page" parent={{ path: `/how-it-works`, title: `How it works` }} contentRef={contentRef} /> },
+        { path: "/how-it-works", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_HOW_WORKS} articleType="HowItWorks" contentRef={contentRef} /> },
+        { path: "/community/case-studies/:slugField", render: ({ match }) => <CaseStudyPage slugField={match.params.slugField} contentRef={contentRef} /> },
+        { path: "/community/case-studies", render: () => <LandingPage styleName="main" parent={{ path: `/community`, title: `Community` }} contentRef={contentRef} /> },
+        { path: "/community/standard-community", render: () => <WhoIsUsing styleName="main" parent={{ path: `/community`, title: `Community` }} contentRef={contentRef} /> },
+        { path: "/community", render: () => <GenericLandingPage cmsLocation={process.env.REACT_APP_COMMUNITY_PAGE} articleType="communityPage" contentRef={contentRef} /> },
+        { path: "/contact-us", render: () => <GenericContentPage cmsLocation={CONTACT_PAGE} articleType="contactUs" contentRef={contentRef} /> },
+        { path: "/accessibility-statement", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" contentRef={contentRef} /> },
+        { path: "/privacy-policy", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" contentRef={contentRef} /> },
+        { path: "/terms-conditions", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" contentRef={contentRef} /> },
+        { path: "/show-error", render: () => <GenericErrorPage contentRef={contentRef} /> },
+        { path: "/open-referral-uk-video-transcript", render: ({ location }) => <GenericContentPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" contentRef={contentRef} /> },
+        { path: "/dashboard", render: () => <Dashboard contentRef={contentRef} /> },
+        { path: "/devdashboard", render: () => <Dashboard overrideData={mockData} contentRef={contentRef} /> },
+        { path: "/register", render: ({ location }) => <RegisterPage cmsLocation={`/pages?slugfield=${location.pathname.substring(1)}`} articleType="page" contentRef={contentRef} /> },
+        { path: "/preview", render: () => <Preview contentRef={contentRef} /> },
+        { path: "/404", render: () => <NotFound contentRef={contentRef} /> }
     ];
 
     useEffect(() => {
@@ -152,7 +153,7 @@ function App() {
         !isFetching && !isError && Object.keys(homeProps).length > 0 &&
 
         (<>
-            <SkipToContent />
+            <SkipToContent contentRef={contentRef} />
             <CookieBanner isVisible={showBanner} onClick={{accept: handleAccept, reject: handleReject}}/>
             <Header mainMenu={mainMenu} topMenuId={topMenuId.toString()} />
 

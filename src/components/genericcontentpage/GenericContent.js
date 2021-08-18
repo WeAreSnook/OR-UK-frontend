@@ -4,7 +4,7 @@ import PageTitle from './PageTitle';
 import BackButton from './BackButton';
 import ReadNextLink from './ReadNextLink';
 
-const GenericContent = ({ description, showDescription = false, article, articleClassName, parent, Sections = HtmlSections, RelatedLink = ReadNextLink }) => {
+const GenericContent = ({ description, showDescription = false, article, articleClassName, parent, contentRef, Sections = HtmlSections, RelatedLink = ReadNextLink }) => {
 
     if (!article)
         return null;
@@ -13,7 +13,7 @@ const GenericContent = ({ description, showDescription = false, article, article
 
     const sectionHeadings = sections.map(section => section.sectionHeading);
 
-    return <main id="content" className="main-container">
+    return <main id="content" ref={contentRef} className="main-container">
         <PageTitle title={title} />
         <div className={`page-container flex-container`}>
             <SideMenu subMenu={sectionHeadings} />
