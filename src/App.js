@@ -31,7 +31,6 @@ const cookieExists = (name) => {
 };
 
 const initGoogleAnalytics = () => {
-    console.log('google analytics enabled');
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
             'gtm.start':
@@ -60,7 +59,6 @@ function App() {
     const [homeProps, setHomeProps] = useState({});
     const [topMenuId, setTopMenuId] = useState('');
     const [mainMenu, setMainMenu] = useState([]);
-    const [errors] = useState({});  //use to confirm render component or error page
 
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const ABOUT_PAGE = process.env.REACT_APP_ABOUT_PAGE_URI;
@@ -92,8 +90,6 @@ function App() {
   
     },[cookies, setShowBanner]);
 
-    console.log(errors);  //take care of on refactor
-
     let [{ data, isFetching, isError }] = useOukapi(`${BASE_URL}${REACT_APP_FOOTER}`)
     const footerProps = data;
 
@@ -124,14 +120,13 @@ function App() {
         fetchLandingPageContent()
             .then((data) => {
                 // set data from strapi to state vars
-                console.log("homeprops", data)
                 setHomeProps((data));
                 // setBodyText(data.projectOverview);
                 if (data.top_menu) {
                     setTopMenuId(data.top_menu.id);
                 }
 
-            }).catch(err => console.log("do something with error as required"));
+            }).catch(err => console.log("An error was encountered ", err));
 
         fetchMainMenuItems()
             .then((data) => {
@@ -163,8 +158,7 @@ function App() {
 
             <div className="page-wrapper">
                 <Switch>
-                    {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} component={r.component} render={r.render} />)}
-                    <Redirect from="/standard-community" to="/community/standard-community" />
+                    {routes.map(r => <Route key={r.path} exact={r.exact} path={r.path} render={r.render} />)}
                     <Redirect to="/404" />
                 </Switch>
             </div>
