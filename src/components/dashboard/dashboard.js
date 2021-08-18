@@ -47,7 +47,7 @@ const parseHelp = (contentArray, slugfield) => {
     return sections.reduce((accumulator, s) => { accumulator[s.sectionHeading] = s.sectionBody; return accumulator; }, { title });
 };
 
-const Dashboard = ({ overrideData = undefined }) => {
+const Dashboard = ({ overrideData = undefined, contentRef }) => {
     const [data, setData] = useState(overrideData || []);
     const [content, setContent] = useState({});
     const [help, setHelp] = useState({});
@@ -86,7 +86,7 @@ const Dashboard = ({ overrideData = undefined }) => {
     }, []);
 
     return <div className='page-container flex-container'>
-        <main id='content' className='main-container'>
+        <main id='content' className='main-container' ref={contentRef}>
             <PageTitle title={content.title} />
             <article className='flex-right mb-1rem'>
                 <h1>{content.title}</h1>

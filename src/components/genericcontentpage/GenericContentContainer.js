@@ -4,7 +4,7 @@ import GenericContent from './GenericContent';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const GenericContentContainer = ({ cmsLocation, articleType, parent = null, articleClassName = null, ContentComponent = GenericContent, NotFoundComponent = NotFound }) => {
+const GenericContentContainer = ({ cmsLocation, articleType, parent = null, contentRef, articleClassName = null, ContentComponent = GenericContent, NotFoundComponent = NotFound }) => {
     const [article, setArticle] = useState(null);
     const [isNotFound, setIsNotFound] = useState(false);
     const [data, setData] = useState(null);
@@ -47,6 +47,7 @@ const GenericContentContainer = ({ cmsLocation, articleType, parent = null, arti
         description,
         article,
         parent,
+        contentRef,
         articleClassName
     };
 

@@ -28,7 +28,7 @@ const Content = ({ slugfield, content }) => {
     return content.map(c => <Page key={c.id} page={c.page} />);
 };
 
-const Preview = () => {
+const Preview = ({contentRef}) => {
     const [content, setContent] = useState({});
     const search = window.location.search;
     const params = qs.parse(search);
@@ -46,7 +46,7 @@ const Preview = () => {
     }, [slugfield, contentPath]);
 
     return <div className="page-container flex-container">
-        <main id="content" className="main-container">
+        <main id="content" className="main-container" ref={contentRef}>
             <article className="flex-right mb-1rem">
                 <h1>Preview</h1>
                 <Content {...{ slugfield, content }} />
