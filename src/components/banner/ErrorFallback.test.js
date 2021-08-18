@@ -9,17 +9,24 @@ describe("Error boundary component", () => {
     render(<ErrorFallback />);
   });
 
-  it("should display the text something has gone wrong", () => {
+  it("displays the text something went wrong", () => {
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
   });
 
-  it("should have an element with a Main role", () => {
+  it("has an element with a main role", () => {
     expect(screen.getByRole("main")).toHaveClass("main-container");
   });
 
-  it("should alert the user there", async () => {
+  it("contains a button to redirect the user", async () => {
     expect(await screen.findByText("Open Referral UK Home")).toBeInTheDocument();
   });
-  // check it has one header tag 
-  // check anchor tag
+
+  it("contains one header tag", () => {
+    expect(screen.getAllByRole("heading", {level: 1}).length).toEqual(1);
+  });
+
+  it("contains an anchor tag", () => {
+    expect(screen.getByText("Open Referral UK Home").closest("a")).toHaveAttribute("href", "/");
+    expect(screen.getAllByRole('link').length).toEqual(2);
+  });
 });
