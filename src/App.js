@@ -127,7 +127,7 @@ function App() {
                     setTopMenuId(data.top_menu.id);
                 }
 
-            }).catch(err => {return err});
+            }).catch(err => console.log("An exception occurred within the application, please contact the administrator."));
 
         fetchMainMenuItems()
             .then((data) => {

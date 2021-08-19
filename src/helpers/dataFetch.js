@@ -21,6 +21,7 @@ const useOukapi = (urlParam) => {
                     setIsFetching(false);
                 }
             } catch (error) {
+                console.log("An exception occurred within the application, please contact the administrator.")
                 setIsError(true);
                 setIsFetching(false);
             }

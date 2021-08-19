@@ -17,9 +17,9 @@ export const fetchLandingPageContent = () => {
       if (res.status === 200) {
         return await res.json();
       } else {
-        return res.status;
+        console.log("An exception occurred within the application, please contact the administrator.");
       }
-    }).catch(err => {return err});
+    }).catch(err => console.log("An exception occurred within the application, please contact the administrator."));
 }
 
 export const fetchMainMenuItems = () => {
@@ -29,7 +29,7 @@ export const fetchMainMenuItems = () => {
       if (res.status === 200) {
         return await res.json();
       } else {
-        return res.status;
+        console.log("An exception occurred within the application, please contact the administrator.");
       }
 
     })
