@@ -1,6 +1,6 @@
 //lets refactor this we can look at together but I have made this env var change because the url is likely to change
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://admin.beta.openreferraluk.org';
-const LANDING_PAGE_URI = '/home-page';
+const LANDING_PAGE_URI = '/home-pag';
 const MENU_URI = '/top-menus';
 const SUB_MENU_URI = '/sub-menus/';
 
