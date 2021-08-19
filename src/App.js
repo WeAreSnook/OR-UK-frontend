@@ -127,7 +127,7 @@ function App() {
                     setTopMenuId(data.top_menu.id);
                 }
 
-            }).catch(err => console.log("An exception occurred ", err));
+            }).catch(err => {return err});
 
         fetchMainMenuItems()
             .then((data) => {

@@ -15,12 +15,11 @@ export const fetchLandingPageContent = () => {
   return fetch(BASE_URL + LANDING_PAGE_URI)
     .then(async res => {
       if (res.status === 200) {
-        console.log("response from fetch home ", res.status);
         return await res.json();
       } else {
-        console.log("response status ", res.status)
+        return res.status;
       }
-    }).catch(err => { console.log(err); });
+    }).catch(err => {return err});
 }
 
 export const fetchMainMenuItems = () => {
@@ -28,17 +27,15 @@ export const fetchMainMenuItems = () => {
     .then(async res => {
 
       if (res.status === 200) {
-
         return await res.json();
       } else {
-        console.log("response from fetch menu ", res.status);
+        return res.status;
       }
 
     })
 }
 
 export const fetchSubMenuItems = subMenuId => {
-  console.log("fetch with submenuid ", subMenuId);
   return fetch(BASE_URL + SUB_MENU_URI + subMenuId)
     .then(res => res.json()).catch(err => { throw new Error("Network time out") });
 }

@@ -13,9 +13,7 @@ const useOukapi = (urlParam) => {
         const fetchContent = async () => {
             setIsError(false);
 
-            console.log(urlParam)
             //value not set checks call error page
-
             try {
                 const response = await fetch(url);
                 if (response.status === 200) {
@@ -23,7 +21,6 @@ const useOukapi = (urlParam) => {
                     setIsFetching(false);
                 }
             } catch (error) {
-                console.log('any errors?', error);
                 setIsError(true);
                 setIsFetching(false);
             }
