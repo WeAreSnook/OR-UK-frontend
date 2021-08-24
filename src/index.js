@@ -7,13 +7,17 @@ import App from './App';
 import ScrollToTop from './components/navigator/ScrollToTop';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ErrorFallback from "./components/banner/ErrorFallback";
+import { ErrorBoundary } from "react-error-boundary";
 
 ReactDOM.render(
   <React.StrictMode>
+    <ErrorBoundary fallbackRender={(error) => <ErrorFallback error={error} /> } >
     <Router>
       <ScrollToTop/>
       <App />
     </Router>
+    </ErrorBoundary>
   </React.StrictMode>,
   
   document.getElementById('root')
