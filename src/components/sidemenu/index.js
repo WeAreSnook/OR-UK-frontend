@@ -24,6 +24,7 @@ const SideMenu = ({ subMenu }) => {
 							)
 						})}
 					</ul>
+					<AnchorLink href={`#content`}>Scroll to top</AnchorLink>
 				</nav>
 			</aside>
 		</>
